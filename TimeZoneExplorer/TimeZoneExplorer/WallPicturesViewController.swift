@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class WallPicturesViewController: UIViewController {
 
@@ -33,9 +34,7 @@ class WallPicturesViewController: UIViewController {
     func cleanWall()
     {
         for viewToRemove in wallScroll.subviews {
-            if let viewToRemove = viewToRemove as? UIView {
-                viewToRemove.removeFromSuperview()
-            }
+            viewToRemove.removeFromSuperview()
         }
     }
     
@@ -46,7 +45,7 @@ class WallPicturesViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func logOutPressed(sender: AnyObject) {
-        //TODO
+        PFUser.logOut()
         //If logout succesful:
         navigationController?.popToRootViewControllerAnimated(true)
     }

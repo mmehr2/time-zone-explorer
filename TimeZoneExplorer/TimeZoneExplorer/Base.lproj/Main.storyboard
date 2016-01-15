@@ -41,8 +41,8 @@
                                     <action selector="logInPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Cwd-7V-KFt"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="New user?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Cc4-K9-2oU">
-                                <rect key="frame" x="203" y="154" width="82" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="New user?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Cc4-K9-2oU">
+                                <rect key="frame" x="204" y="154" width="81" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -370,6 +370,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="HV9-vb-NjQ"/>
         <segue reference="ARl-8E-2cq"/>
-        <segue reference="ras-IM-w3T"/>
+        <segue reference="pfy-sL-CBH"/>
     </inferredMetricsTieBreakers>
 </document>
