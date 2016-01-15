@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class LoginViewController: UIViewController {
 
@@ -19,10 +20,28 @@ class LoginViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Check if user exists and logged in
+        if let user = PFUser.currentUser() {
+            if user.authenticated {
+                // bypass the login screen entirely, go directly to main screen
+                self.performSegueWithIdentifier(scrollViewWallSegue, sender: nil)
+            }
+        }
     }
 
     // MARK: - Actions
     @IBAction func logInPressed(sender: AnyObject) {
-        performSegueWithIdentifier(scrollViewWallSegue, sender: nil)
+        // perform some basic validation checks -- disallow blanks anyway
+        guard let userText = userTextField.text where userText != "" else {return}
+        guard let passwordText = passwordTextField.text where passwordText != "" else {return}
+        
+        PFUser.logInWithUsernameInBackground(userText, password: passwordText) { user, error in
+            if user != nil {
+                // if successfully logged in, go to the main screen
+                self.performSegueWithIdentifier(self.scrollViewWallSegue, sender: nil)
+            } else if let error = error {
+                self.showErrorView(error)
+            }
+        }
     }
 }

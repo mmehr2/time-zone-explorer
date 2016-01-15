@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class WallPicturesTableViewController: UITableViewController {
     
@@ -17,7 +18,7 @@ class WallPicturesTableViewController: UITableViewController {
 
     // MARK: - Actions
     @IBAction func logOutPressed(sender: AnyObject) {
-        //TODO
+        PFUser.logOut()
         //If logout succesful:
         navigationController?.popToRootViewControllerAnimated(true)
     }

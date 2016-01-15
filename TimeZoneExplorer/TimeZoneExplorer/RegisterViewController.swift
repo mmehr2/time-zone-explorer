@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class RegisterViewController: UIViewController {
 
@@ -25,8 +26,23 @@ class RegisterViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func signUpPressed(sender: AnyObject) {
-        //TODO
-        //If signup sucessful:
-        performSegueWithIdentifier(self.scrollViewWallSegue, sender: nil)
+        // perform some basic validation checks -- disallow blanks anyway
+        guard let userText = userTextField.text where userText != "" else {return}
+        guard let passwordText = passwordTextField.text where passwordText != "" else {return}
+ 
+        // create a parse user here (rely on Parse validation?)
+        let user = PFUser();
+        user.username = userText
+        user.password = passwordText
+        
+        user.signUpInBackgroundWithBlock { succeeded, error in
+            if (succeeded) {
+                //The registration was successful, go to the main screen
+                self.performSegueWithIdentifier(self.scrollViewWallSegue, sender: nil)
+            } else if let error = error {
+                //Something bad has occurred
+                self.showErrorView(error)
+            }
+        }
     }
 }
