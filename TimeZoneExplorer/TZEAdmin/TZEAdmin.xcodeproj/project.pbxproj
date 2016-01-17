@@ -1,0 +1,252 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A6CEA17F1C4AA75F00B26548 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA17E1C4AA75F00B26548 /* main.swift */; };
+		A6CEA18C1C4AD94500B26548 /* CreateNameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA18B1C4AD94500B26548 /* CreateNameData.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A6CEA1791C4AA75F00B26548 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A6CEA17B1C4AA75F00B26548 /* TZEAdmin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TZEAdmin; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6CEA17E1C4AA75F00B26548 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		A6CEA18B1C4AD94500B26548 /* CreateNameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNameData.swift; sourceTree = "<group>"; };
+		A6CEA18D1C4AE90700B26548 /* TimeZones.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TimeZones.csv; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A6CEA1781C4AA75F00B26548 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A6CEA1721C4AA75F00B26548 = {
+			isa = PBXGroup;
+			children = (
+				A6CEA17D1C4AA75F00B26548 /* TZEAdmin */,
+				A6CEA17C1C4AA75F00B26548 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A6CEA17C1C4AA75F00B26548 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A6CEA17B1C4AA75F00B26548 /* TZEAdmin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A6CEA17D1C4AA75F00B26548 /* TZEAdmin */ = {
+			isa = PBXGroup;
+			children = (
+				A6CEA17E1C4AA75F00B26548 /* main.swift */,
+				A6CEA18B1C4AD94500B26548 /* CreateNameData.swift */,
+				A6CEA18D1C4AE90700B26548 /* TimeZones.csv */,
+			);
+			path = TZEAdmin;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A6CEA17A1C4AA75F00B26548 /* TZEAdmin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6CEA1821C4AA75F00B26548 /* Build configuration list for PBXNativeTarget "TZEAdmin" */;
+			buildPhases = (
+				A6CEA1771C4AA75F00B26548 /* Sources */,
+				A6CEA1781C4AA75F00B26548 /* Frameworks */,
+				A6CEA1791C4AA75F00B26548 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TZEAdmin;
+			productName = TZEAdmin;
+			productReference = A6CEA17B1C4AA75F00B26548 /* TZEAdmin */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A6CEA1731C4AA75F00B26548 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Michael L. Mehr";
+				TargetAttributes = {
+					A6CEA17A1C4AA75F00B26548 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = A6CEA1761C4AA75F00B26548 /* Build configuration list for PBXProject "TZEAdmin" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A6CEA1721C4AA75F00B26548;
+			productRefGroup = A6CEA17C1C4AA75F00B26548 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A6CEA17A1C4AA75F00B26548 /* TZEAdmin */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A6CEA1771C4AA75F00B26548 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6CEA18C1C4AD94500B26548 /* CreateNameData.swift in Sources */,
+				A6CEA17F1C4AA75F00B26548 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A6CEA1801C4AA75F00B26548 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A6CEA1811C4AA75F00B26548 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A6CEA1831C4AA75F00B26548 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A6CEA1841C4AA75F00B26548 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A6CEA1761C4AA75F00B26548 /* Build configuration list for PBXProject "TZEAdmin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6CEA1801C4AA75F00B26548 /* Debug */,
+				A6CEA1811C4AA75F00B26548 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6CEA1821C4AA75F00B26548 /* Build configuration list for PBXNativeTarget "TZEAdmin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6CEA1831C4AA75F00B26548 /* Debug */,
+				A6CEA1841C4AA75F00B26548 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A6CEA1731C4AA75F00B26548 /* Project object */;
+}
