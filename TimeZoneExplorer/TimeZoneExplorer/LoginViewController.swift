@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
     }
     
     func isUserAManager() -> Bool {
+        // TBD: figure out from user role
         return false
     }
     
