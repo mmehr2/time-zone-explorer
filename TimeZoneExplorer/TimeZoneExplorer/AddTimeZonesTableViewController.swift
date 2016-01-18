@@ -11,23 +11,82 @@ import Parse
 import ParseUI
 
 class AddTimeZonesTableViewController: PFQueryTableViewController {
+    
+    var searchController: UISearchController!
+    var searchString: String?// = "America"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        // {DOESNT SEEM TO WORK THO} // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
 
+        // set up search controller for use in filtering and add to header view
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.scopeButtonTitles = []
+        searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
+        
+        // "also a good idea" on original source's discussion of this (not related to bugfix)
+        self.definesPresentationContext = true
+        // add search bar to UI as header view
+        tableView.tableHeaderView = searchController.searchBar
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func queryForTable() -> PFQuery {
+        let query = PFQuery(className: "TimeZones")
+        query.orderByAscending("name")
+        if let searchString = searchString {
+            query.whereKey("name", containsString: searchString)
+        }
+        return query
+    }
+    
+    /*
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
+    }
+    */
+    
+}
 
-    // MARK: - Table view data source
+// MARK: - Search results update
+extension AddTimeZonesTableViewController: UISearchResultsUpdating {
+
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        searchString = searchController.searchBar.text
+        if let searchString = searchString {
+            // TBD: search for the text string here
+            print("FILTER: Searching for {\(searchString)}")
+            // then trigger the reload of only the relevant data
+            loadObjects() // uses the PFQuery defined by searchString to reload the table from Parse (internet required!)
+        }
+    }
+    
+}
+
+extension AddTimeZonesTableViewController: UISearchBarDelegate {
+    
+    
+}
+
+// MARK: - Table view data source
+extension AddTimeZonesTableViewController {
+    
 
 //    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 //        // #warning Incomplete implementation, return the number of sections
@@ -39,15 +98,19 @@ class AddTimeZonesTableViewController: PFQueryTableViewController {
 //        return 0
 //    }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
+        let cellIdentifier = "MasterTimeZoneCell"
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? PFTableViewCell
+        if cell == nil {
+            cell = PFTableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
+        }
 
-        // Configure the cell...
-
+        let zoneID = (object?["name"] as? String ?? "")
+        cell?.textLabel?.text = zoneID + " (GMT+10:00)"
+        
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -83,15 +146,5 @@ class AddTimeZonesTableViewController: PFQueryTableViewController {
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
