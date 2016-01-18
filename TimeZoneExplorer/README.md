@@ -66,6 +66,7 @@ Due to the current design using Apple technologies, we will start by using the d
 ### User Role Capabilities
 * Log in
 * View owned list of time zones
+* View details of selected time zone from list
 * Add time zone of interest from master list to owned list
 * Delete entry from owned list
 * Log out
@@ -73,6 +74,7 @@ Due to the current design using Apple technologies, we will start by using the d
 ### Manager Role Capabilities
 * Log in
 * View list of Users
+* View details of selected User from list
 * Reset User password
 * Add new User to system
 * Delete User from system
