@@ -19,6 +19,12 @@ class TimeZonesTableViewController: PFQueryTableViewController {
         }
     }
 
+    // hide the tab bar controller when in User role (does the toolbar leave too? I hope not...)
+    override var hidesBottomBarWhenPushed: Bool {
+        get {return false} // uncomment when role detection is working { return TZClient.role == .User }
+        set { super.hidesBottomBarWhenPushed = newValue }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
