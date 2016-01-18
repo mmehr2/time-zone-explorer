@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
         if let user = PFUser.currentUser() {
             if user.authenticated {
                 // bypass the login screen entirely, go directly to main screen
-                self.performSegueWithIdentifier(scrollViewWallSegue, sender: nil)
+                self.performSegueWithIdentifier(tableViewWallSegue, sender: nil)
             }
         }
     }
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
         PFUser.logInWithUsernameInBackground(userText, password: passwordText) { user, error in
             if user != nil {
                 // if successfully logged in, go to the main screen
-                self.performSegueWithIdentifier(self.scrollViewWallSegue, sender: nil)
+                self.performSegueWithIdentifier(self.tableViewWallSegue, sender: nil)
             } else if let error = error {
                 self.showErrorView(error)
             }

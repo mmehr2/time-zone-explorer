@@ -8,8 +8,9 @@
 
 import UIKit
 import Parse
+import ParseUI
 
-class WallPicturesTableViewController: UITableViewController {
+class WallPicturesTableViewController: PFQueryTableViewController {
     
     // MARK: - Lifecycle
     override func viewDidLoad() {

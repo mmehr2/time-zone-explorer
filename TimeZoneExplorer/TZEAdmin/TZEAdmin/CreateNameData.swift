@@ -12,7 +12,9 @@ import Foundation
 
 // create CSV list of all TZ names (IDs)
 func serializeTimeZoneNames(reverse: Bool = false) -> String {
-    let zoneIDs = reverse ? NSTimeZone.knownTimeZoneNames().reverse() : NSTimeZone.knownTimeZoneNames()
+    let rawData = NSTimeZone.knownTimeZoneNames()
+    let zoneIDs = reverse ? rawData.reverse() : rawData
+    print("Processed \(zoneIDs.count) time zone IDs")
     let result = zoneIDs.joinWithSeparator("\n")
     return result
 }

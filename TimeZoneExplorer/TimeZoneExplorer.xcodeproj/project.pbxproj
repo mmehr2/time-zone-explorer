@@ -18,9 +18,6 @@
 		A6CEA14D1C4855F200B26548 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA1451C4855F200B26548 /* RegisterViewController.swift */; };
 		A6CEA14E1C4855F200B26548 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA1461C4855F200B26548 /* UIViewControllerExtension.swift */; };
 		A6CEA1501C4855F200B26548 /* WallPicturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA1481C4855F200B26548 /* WallPicturesTableViewController.swift */; };
-		A6CEA1511C4855F200B26548 /* WallPicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA1491C4855F200B26548 /* WallPicturesViewController.swift */; };
-		A6CEA1521C4855F200B26548 /* WallPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA14A1C4855F200B26548 /* WallPost.swift */; };
-		A6CEA1531C4855F200B26548 /* WallPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA14B1C4855F200B26548 /* WallPostTableViewCell.swift */; };
 		A6CEA1571C4859EA00B26548 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CEA1551C4859EA00B26548 /* Bolts.framework */; };
 		A6CEA1581C4859EA00B26548 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CEA1561C4859EA00B26548 /* Parse.framework */; };
 		A6CEA1631C485AF900B26548 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CEA1591C485AF900B26548 /* AudioToolbox.framework */; };
@@ -34,7 +31,7 @@
 		A6CEA16B1C485AF900B26548 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CEA1611C485AF900B26548 /* StoreKit.framework */; };
 		A6CEA16C1C485AF900B26548 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CEA1621C485AF900B26548 /* SystemConfiguration.framework */; };
 		A6CEA16F1C485B5100B26548 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CEA16E1C485B5000B26548 /* ParseUI.framework */; };
-		A6CEA18F1C4AEE4200B26548 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA18E1C4AEE4200B26548 /* README.md */; };
+		A6EF14871C4CBE42000658B1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF14861C4CBE42000658B1 /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,9 +76,6 @@
 		A6CEA1451C4855F200B26548 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A6CEA1461C4855F200B26548 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		A6CEA1481C4855F200B26548 /* WallPicturesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallPicturesTableViewController.swift; sourceTree = "<group>"; };
-		A6CEA1491C4855F200B26548 /* WallPicturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallPicturesViewController.swift; sourceTree = "<group>"; };
-		A6CEA14A1C4855F200B26548 /* WallPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallPost.swift; sourceTree = "<group>"; };
-		A6CEA14B1C4855F200B26548 /* WallPostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallPostTableViewCell.swift; sourceTree = "<group>"; };
 		A6CEA1551C4859EA00B26548 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		A6CEA1561C4859EA00B26548 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A6CEA1591C485AF900B26548 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -97,6 +91,7 @@
 		A6CEA16E1C485B5000B26548 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		A6CEA1851C4AA75F00B26548 /* TZEAdmin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TZEAdmin.xcodeproj; path = TZEAdmin/TZEAdmin.xcodeproj; sourceTree = "<group>"; };
 		A6CEA18E1C4AEE4200B26548 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A6EF14861C4CBE42000658B1 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,11 +163,9 @@
 				A6CEA1701C48B81C00B26548 /* Storyboards */,
 				A6CEA0F91C4851AA00B26548 /* ViewController.swift */,
 				A6CEA1441C4855F200B26548 /* LoginViewController.swift */,
+				A6EF14861C4CBE42000658B1 /* SignInViewController.swift */,
 				A6CEA1451C4855F200B26548 /* RegisterViewController.swift */,
 				A6CEA1481C4855F200B26548 /* WallPicturesTableViewController.swift */,
-				A6CEA1491C4855F200B26548 /* WallPicturesViewController.swift */,
-				A6CEA14A1C4855F200B26548 /* WallPost.swift */,
-				A6CEA14B1C4855F200B26548 /* WallPostTableViewCell.swift */,
 				A6CEA0FE1C4851AA00B26548 /* Assets.xcassets */,
 				A6CEA1031C4851AA00B26548 /* Info.plist */,
 			);
@@ -389,16 +382,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6EF14871C4CBE42000658B1 /* SignInViewController.swift in Sources */,
 				A6CEA14C1C4855F200B26548 /* LoginViewController.swift in Sources */,
-				A6CEA1531C4855F200B26548 /* WallPostTableViewCell.swift in Sources */,
-				A6CEA18F1C4AEE4200B26548 /* README.md in Sources */,
 				A6CEA0FA1C4851AA00B26548 /* ViewController.swift in Sources */,
-				A6CEA1511C4855F200B26548 /* WallPicturesViewController.swift in Sources */,
 				A6CEA1501C4855F200B26548 /* WallPicturesTableViewController.swift in Sources */,
 				A6CEA14E1C4855F200B26548 /* UIViewControllerExtension.swift in Sources */,
 				A6CEA0F81C4851AA00B26548 /* AppDelegate.swift in Sources */,
 				A6CEA14D1C4855F200B26548 /* RegisterViewController.swift in Sources */,
-				A6CEA1521C4855F200B26548 /* WallPost.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
