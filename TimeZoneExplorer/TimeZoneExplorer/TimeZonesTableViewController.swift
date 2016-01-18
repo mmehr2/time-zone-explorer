@@ -11,11 +11,28 @@ import Parse
 import ParseUI
 
 class TimeZonesTableViewController: PFQueryTableViewController {
+    
+    private func presentLoginScreen() {
+        if !TZClient.loggedIn {
+            let vc = TZClient.getLoginViewControllerFor(self)
+            self.presentViewController(vc, animated: true, completion: nil)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presentLoginScreen()
 
         // Do any additional setup after loading the view.
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        self.navigationItem.rightBarButtonItems?.append(self.editButtonItem())
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+       presentLoginScreen()
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,6 +40,13 @@ class TimeZonesTableViewController: PFQueryTableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func logOutPressed(sender: AnyObject) {
+        PFUser.logOut()
+        //If logout succesful:
+        navigationController?.popToRootViewControllerAnimated(false)
+        presentLoginScreen()
+    }
 
     /*
     // MARK: - Navigation
@@ -34,4 +58,15 @@ class TimeZonesTableViewController: PFQueryTableViewController {
     }
     */
 
+}
+
+extension TimeZonesTableViewController: PFLogInViewControllerDelegate {
+    func logInViewController( controller: PFLogInViewController, didLogInUser user: PFUser ) -> Void {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func logInViewControllerDidCancelLogIn( controller: PFLogInViewController ) -> Void {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }

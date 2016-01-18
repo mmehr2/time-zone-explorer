@@ -1,84 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qcl-QK-I5z">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--LogIn-->
-        <scene sceneID="ufC-wZ-h7g">
-            <objects>
-                <viewController title="LogIn" id="vXZ-lx-hvc" customClass="LoginViewController" customModule="TimeZoneExplorer" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oSt-kB-QHR">
-                                <rect key="frame" x="50" y="40" width="501" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oBO-d7-rsA">
-                                <rect key="frame" x="50" y="78" width="501" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbN-TW-AfN">
-                                <rect key="frame" x="265" y="118" width="70" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="6VZ-sO-Oru"/>
-                                    <constraint firstAttribute="width" constant="70" id="C26-49-FTz"/>
-                                </constraints>
-                                <state key="normal" title="Log In">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="logInPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Cwd-7V-KFt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kr6-xj-fpd">
-                                <rect key="frame" x="50" y="285" width="48" height="30"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logOutPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cAe-Kh-1bd"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="oSt-kB-QHR" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="1mZ-wd-NYD"/>
-                            <constraint firstItem="oSt-kB-QHR" firstAttribute="width" secondItem="oBO-d7-rsA" secondAttribute="width" id="7ZJ-w8-Oyi"/>
-                            <constraint firstItem="oSt-kB-QHR" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="50" id="FsR-ea-XZo"/>
-                            <constraint firstItem="oBO-d7-rsA" firstAttribute="top" secondItem="oSt-kB-QHR" secondAttribute="bottom" constant="8" id="KO7-FE-eut"/>
-                            <constraint firstItem="kr6-xj-fpd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="30" id="UNf-bH-nUu"/>
-                            <constraint firstAttribute="centerX" secondItem="oSt-kB-QHR" secondAttribute="centerX" id="WVa-zP-QWs"/>
-                            <constraint firstItem="kr6-xj-fpd" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="lAx-Hk-KYc"/>
-                            <constraint firstItem="oSt-kB-QHR" firstAttribute="leading" secondItem="oBO-d7-rsA" secondAttribute="leading" id="oYH-9B-gQP"/>
-                            <constraint firstItem="rbN-TW-AfN" firstAttribute="top" secondItem="oBO-d7-rsA" secondAttribute="bottom" constant="10" id="vXu-5D-UVU"/>
-                            <constraint firstAttribute="centerX" secondItem="rbN-TW-AfN" secondAttribute="centerX" id="w5J-JR-KJs"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Log In" id="sw4-EB-zK4"/>
-                    <connections>
-                        <outlet property="passwordTextField" destination="oBO-d7-rsA" id="KhG-ZG-dCV"/>
-                        <outlet property="userTextField" destination="oSt-kB-QHR" id="YtB-m0-tW6"/>
-                        <segue destination="xtf-Zg-cb5" kind="show" identifier="LoginUserSuccessfulSegue" id="AhG-M6-RDr"/>
-                        <segue destination="uJ0-BC-pA3" kind="show" identifier="LoginManagerSuccessfulSegue" id="OO0-us-0vM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1809" y="941"/>
-        </scene>
         <!--UserList-->
         <scene sceneID="u2I-4w-fe6">
             <objects>
-                <tableViewController title="UserList" id="Zt8-Dd-VyU" sceneMemberID="viewController">
+                <tableViewController title="UserList" id="Zt8-Dd-VyU" customClass="UsersTableViewController" customModule="TimeZoneExplorer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="46" sectionHeaderHeight="28" sectionFooterHeight="28" id="2PB-kC-Pj8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,16 +41,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="User List" prompt="Mgr name goes here" id="Djo-A0-uKb">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="cH4-u2-9gx"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xl7-fG-Zbl">
                             <connections>
                                 <segue destination="bnL-kr-G2Z" kind="show" identifier="AddUserDetailsSegue" id="09S-Np-B7S"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="parseClassName" value="_User"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="textKey" value="username"/>
+                    </userDefinedRuntimeAttributes>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZGZ-TX-Nes" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2729" y="2403"/>
+            <point key="canvasLocation" x="3541" y="2403"/>
         </scene>
         <!--UserDetails-->
         <scene sceneID="9dc-gi-ABn">
@@ -138,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XqE-w3-VVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3501" y="2403"/>
+            <point key="canvasLocation" x="4313" y="2403"/>
         </scene>
         <!--TimeZoneList-->
         <scene sceneID="sqX-Bw-IL4">
@@ -150,7 +85,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="TimeZoneCell" textLabel="gkr-Gz-dFI" style="IBUITableViewCellStyleDefault" id="VL5-jf-kSJ">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="122" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VL5-jf-kSJ" id="ZUF-ck-GSq">
                                     <rect key="frame" x="0.0" y="0.0" width="533" height="43"/>
@@ -176,6 +111,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Time Zone List" prompt="Username goes here" id="bFc-l6-QMf">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ybr-J2-y82">
+                            <connections>
+                                <action selector="logOutPressed:" destination="SG8-E0-vRg" id="FmD-fh-d3w"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fAC-lU-wNt">
                             <connections>
                                 <segue destination="VMj-pl-QjI" kind="show" identifier="AddTimeZoneSegue" id="sdC-cc-EbC"/>
@@ -189,7 +129,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1DX-5p-qT5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2729" y="1708"/>
+            <point key="canvasLocation" x="3541" y="1708"/>
         </scene>
         <!--AddTimeZone-->
         <scene sceneID="eOD-ja-dOU">
@@ -200,15 +140,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MasterTimeZoneCell" textLabel="ZfU-2E-45X" style="IBUITableViewCellStyleDefault" id="0mf-q4-lfF" customClass="PFTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="MasterTimeZoneCell" textLabel="ZfU-2E-45X" style="IBUITableViewCellStyleDefault" id="0mf-q4-lfF" customClass="PFTableViewCell">
                                 <rect key="frame" x="0.0" y="122" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0mf-q4-lfF" id="hIQ-nf-Pe5">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="533" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZfU-2E-45X">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="518" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -216,6 +156,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="wue-JH-zg1" kind="show" trigger="accessoryAction" id="4It-vA-m3d"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -238,7 +181,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YOG-7h-sXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3501" y="988"/>
+            <point key="canvasLocation" x="4313" y="975"/>
         </scene>
         <!--TimeZoneDetails-->
         <scene sceneID="7x8-uM-dlq">
@@ -256,12 +199,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Qq-mI-voP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3501" y="1708"/>
+            <point key="canvasLocation" x="4313" y="1708"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Time Zones-->
         <scene sceneID="E0o-8p-aKb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xtf-Zg-cb5" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Time Zones" id="Gol-3L-YZB"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Al0-rT-mRC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -274,12 +218,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0S0-yx-gdM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1917" y="1708"/>
+            <point key="canvasLocation" x="2729" y="1708"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Users-->
         <scene sceneID="6JQ-LY-mBG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uJ0-BC-pA3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Users" id="p38-LJ-jNr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ByO-ZX-ika">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -292,10 +237,29 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xPN-bT-RFb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1917" y="2403"/>
+            <point key="canvasLocation" x="2729" y="2403"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="OWx-vj-Til">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="qcl-QK-I5z" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="c3V-zz-mIW">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="xtf-Zg-cb5" kind="relationship" relationship="viewControllers" id="hgx-FK-kz6"/>
+                        <segue destination="uJ0-BC-pA3" kind="relationship" relationship="viewControllers" id="HeP-nI-deu"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i67-2N-omD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1917" y="2055"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="4pg-B0-4mi"/>
+        <segue reference="4It-vA-m3d"/>
     </inferredMetricsTieBreakers>
 </document>

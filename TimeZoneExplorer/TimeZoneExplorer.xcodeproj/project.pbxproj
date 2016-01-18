@@ -30,6 +30,8 @@
 		A6EF14891C4CC51D000658B1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF14881C4CC51D000658B1 /* LoginViewController.swift */; };
 		A6EF148B1C4CDAC0000658B1 /* AddTimeZonesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF148A1C4CDAC0000658B1 /* AddTimeZonesTableViewController.swift */; };
 		A6EF148F1C4CE316000658B1 /* TimeZonesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF148E1C4CE316000658B1 /* TimeZonesTableViewController.swift */; };
+		A6EF14911C4CF504000658B1 /* LoginUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF14901C4CF504000658B1 /* LoginUtilities.swift */; };
+		A6EF14941C4D0530000658B1 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF14931C4D0530000658B1 /* UsersTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		A6EF14881C4CC51D000658B1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A6EF148A1C4CDAC0000658B1 /* AddTimeZonesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTimeZonesTableViewController.swift; sourceTree = "<group>"; };
 		A6EF148E1C4CE316000658B1 /* TimeZonesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZonesTableViewController.swift; sourceTree = "<group>"; };
+		A6EF14901C4CF504000658B1 /* LoginUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUtilities.swift; sourceTree = "<group>"; };
+		A6EF14931C4D0530000658B1 /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +163,9 @@
 				A6CEA1701C48B81C00B26548 /* Storyboards */,
 				A6EF14881C4CC51D000658B1 /* LoginViewController.swift */,
 				A6EF148E1C4CE316000658B1 /* TimeZonesTableViewController.swift */,
+				A6EF14931C4D0530000658B1 /* UsersTableViewController.swift */,
 				A6EF148A1C4CDAC0000658B1 /* AddTimeZonesTableViewController.swift */,
+				A6EF14921C4D034F000658B1 /* Model */,
 				A6CEA0FE1C4851AA00B26548 /* Assets.xcassets */,
 				A6CEA1031C4851AA00B26548 /* Info.plist */,
 			);
@@ -227,6 +233,14 @@
 				A6CEA18A1C4AA76000B26548 /* TZEAdmin */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A6EF14921C4D034F000658B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A6EF14901C4CF504000658B1 /* LoginUtilities.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,10 +390,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6EF14911C4CF504000658B1 /* LoginUtilities.swift in Sources */,
 				A6EF148F1C4CE316000658B1 /* TimeZonesTableViewController.swift in Sources */,
 				A6EF148B1C4CDAC0000658B1 /* AddTimeZonesTableViewController.swift in Sources */,
 				A6EF14891C4CC51D000658B1 /* LoginViewController.swift in Sources */,
 				A6CEA14E1C4855F200B26548 /* UIViewControllerExtension.swift in Sources */,
+				A6EF14941C4D0530000658B1 /* UsersTableViewController.swift in Sources */,
 				A6CEA0F81C4851AA00B26548 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
