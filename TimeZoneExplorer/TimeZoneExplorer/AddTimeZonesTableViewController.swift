@@ -10,16 +10,46 @@ import UIKit
 import Parse
 import ParseUI
 
+protocol TimeZoneAddDelegate {
+    func isZoneIDInList(zoneID: String?) -> Bool
+}
+
 class AddTimeZonesTableViewController: PFQueryTableViewController {
+    
+    var tzaDelegate: TimeZoneAddDelegate?
+    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var searchController: UISearchController!
     var searchString: String?// = "America"
+    // the save button uses the selected value, if any (saved here)
+    // This also updates the prompt on the nav.item when set
+    var selectedZoneID: String? {
+        didSet {
+            let alreadyInList = tzaDelegate?.isZoneIDInList(selectedZoneID) ?? false// consult user's list
+            if let ZID = selectedZoneID {
+                // enable the save button only if the selected ID is NOT already in User's list
+                if alreadyInList {
+                    self.saveButton.enabled = false
+                    self.navigationItem.prompt = "This zone is already in your list: \(ZID)."
+                } else {
+                    self.saveButton.enabled = true
+                    self.navigationItem.prompt = "Press Save to add \(ZID) to your list."
+                }
+            } else {
+                self.navigationItem.prompt = "Touch to select the Time Zone of interest."
+                // also disable Save button if no selection
+                self.saveButton.enabled = false
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        // {DOESNT SEEM TO WORK THO} // self.clearsSelectionOnViewWillAppear = false
+        // {DOESNT SEEM TO WORK THO} 
+        self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -58,20 +88,42 @@ class AddTimeZonesTableViewController: PFQueryTableViewController {
         self.definesPresentationContext = true
         // add search bar to UI as header view
         tableView.tableHeaderView = searchController.searchBar
+        // show the prompt
+        selectedZoneID = nil
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    // Parse query to get objects from the cloud
     override func queryForTable() -> PFQuery {
         let query = PFQuery(className: "TimeZones")
         query.orderByAscending("name")
         if let searchString = searchString {
-            query.whereKey("name", containsString: searchString)
+            // in order to get case-insensitive search, we need to use PFQuery's regex search options
+            let regex = ".*" + searchString + ".*" // naive to assume user knows regex tho
+            // specifically, user-entered regex strings such as ".*" will have the desired effects
+            // this probably won't interfere with naive users, since those are not usually characters
+            //   that appear in time zone names
+            query.whereKey("name", matchesRegex: regex, modifiers: "i")
         }
         return query
+    }
+    
+    // save the selection for the save button
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = self.tableView(tableView, cellForRowAtIndexPath: indexPath)
+        let text = cell.textLabel?.text ?? ""
+        let ID = TZTimeZone.getZoneID(text)
+        selectedZoneID = ID
+    }
+
+    // MARK: - Actions
+    
+    @IBAction func saveButtonPressed(sender: AnyObject) {
+        print("Saving ID=\(selectedZoneID) to user's list.")
     }
     
     /*
@@ -129,7 +181,8 @@ extension AddTimeZonesTableViewController {
         }
 
         let zoneID = (object?["name"] as? String ?? "")
-        cell?.textLabel?.text = zoneID + " (GMT+10:00)"
+        let formattedID = TZTimeZone.getStandardFormat(zoneID)
+        cell?.textLabel?.text = formattedID
         
         return cell
     }

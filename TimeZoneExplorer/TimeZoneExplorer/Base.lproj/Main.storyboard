@@ -168,7 +168,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Time Zones" prompt="Selection goes here" id="oFx-Xf-6XD">
                         <barButtonItem key="backBarButtonItem" title="Back" id="IdW-5z-Opm"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="98Z-47-l2H"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="98Z-47-l2H">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="VMj-pl-QjI" id="TRb-TA-7OS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="parseClassName" value="TimeZones"/>
@@ -178,6 +182,9 @@
                             <integer key="value" value="500"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="saveButton" destination="98Z-47-l2H" id="i8G-gx-22O"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YOG-7h-sXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
