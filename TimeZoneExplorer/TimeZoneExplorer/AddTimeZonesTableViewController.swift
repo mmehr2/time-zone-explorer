@@ -25,32 +25,40 @@ class AddTimeZonesTableViewController: PFQueryTableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
         // set up search controller for use in filtering and add to header view
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.delegate = self
-        searchController.searchBar.sizeToFit()
+        // FIX TO PREVENT UISEARCHCONTROLLER BUG (REVISED)
+        /*
+        Bug displays this error:
+        2016-01-18 14:04:32.251 TimeZoneExplorer[50766:676731] Attempting to load the view of a view controller while it is deallocating is not allowed and may result in undefined behavior (<UISearchController: 0x7fa172757860>)
+        Fix comes from here (further answer by Derek plus my comment):
+        http://stackoverflow.com/questions/32282401/attempting-to-load-the-view-of-a-view-controller-while-it-is-deallocating-uis
+        NOTE: Now bug doesn't seem to happen. Issue? I'll leave the code in.
+        */
+        self.searchController = {
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.delegate = self
+            controller.searchBar.sizeToFit()
+            
+            //self.tableView.tableHeaderView = controller.searchBar
+            
+            return controller
+            }()
+        // NOTE: these lines were shown before the previous, but only work if called after
+        // If not included, the bug is still there, but with the call to loadViewIfNeeded(), the bug goes away
+        if #available(iOS 9.0, *) {
+            self.searchController.loadViewIfNeeded()// iOS 9
+        } else {
+            // Fallback on earlier versions
+            let _ = self.searchController.view          // iOS 8
+        }
+        // END OF BUGFIX
         
         // "also a good idea" on original source's discussion of this (not related to bugfix)
         self.definesPresentationContext = true
         // add search bar to UI as header view
         tableView.tableHeaderView = searchController.searchBar
     }
-    
-    // FIX TO PREVENT UISEARCHCONTROLLER BUG
-    /*
-    Bug displays this error:
-    2016-01-18 14:04:32.251 TimeZoneExplorer[50766:676731] Attempting to load the view of a view controller while it is deallocating is not allowed and may result in undefined behavior (<UISearchController: 0x7fa172757860>)
-    Fix comes from here:
-    http://stackoverflow.com/questions/32282401/attempting-to-load-the-view-of-a-view-controller-while-it-is-deallocating-uis
-    */
-    deinit{
-        if let superView = searchController.view.superview
-        {
-            superView.removeFromSuperview()
-        }
-    }
-    // END BUG FIX
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
