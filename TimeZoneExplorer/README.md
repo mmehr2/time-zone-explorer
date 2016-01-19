@@ -139,6 +139,7 @@ Screen shot TBD.
 * The Save button will be disabled when the selection is already in the user's list.
 * Multiple selections can be Saved as needed.
 * A back button will return to the __Time Zone List__ main view.
+* A Search box is provided for name filtering (Requirement 6). Operation is according to Apple standards.
 
 Screen shot TBD.
 
