@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import Parse
-import ParseUI
+//import Parse
+//import ParseUI
 
 class TZTimeZone {
     static func getStandardFormat( zoneID: String ) -> String {
@@ -21,15 +21,24 @@ class TZTimeZone {
                 }
             }
             // convert offset to hours/minutes standard form
-            let offstr = "\(offset<0 ? "-" : "+")\(offset/3600):\((offset%3600)/60)"
-            let abbrev = " [\(zone.abbreviation)]" ?? ""
+            let offabs = abs(offset)
+            let offhours = offabs/3600
+            let offmins = (offabs%3600) / 60
+            let offextra = (offmins == 0) ? "0" : "" // kludge to prevent a single 0 when 0 mins
+            let offstr = "\(offset<0 ? "-" : "+")\(offhours):\(offmins)\(offextra)"
+            let abbrev: String
+            if let abbrevX = zone.abbreviation {
+                abbrev = " [\(abbrevX)]"
+            } else {
+                abbrev = ""
+            }
             result = "\(zoneID) (GMT\(offstr))\(abbrev)"
         }
         return result
     }
     
-    static func getZoneID( input: String ) -> String? {
-        var result:String?
+    static func getZoneID( input: String ) -> String {
+        var result:String = ""
         // truncate string at first occurrence of " ("
         if let foundRange = input.rangeOfString(" (") {
             result = input.substringToIndex(foundRange.startIndex)

@@ -17,6 +17,9 @@ class TimeZonesTableViewController: PFQueryTableViewController {
             let vc = TZClient.getLoginViewControllerFor(self)
             self.presentViewController(vc, animated: true, completion: nil)
         }
+        if TZClient.loggedIn {
+            self.navigationItem.prompt = TZClient.getFormattedUsernameTitle()
+        }
     }
 
     // hide the tab bar controller when in User role (does the toolbar leave too? I hope not...)
@@ -54,18 +57,25 @@ class TimeZonesTableViewController: PFQueryTableViewController {
         presentLoginScreen()
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "AddTimeZoneSegue" {
+            // just need to specify ourselves as the TimeZoneAddDelegate to answer questions about our list
+            if let dvc = segue.destinationViewController as? AddTimeZonesTableViewController {
+                dvc.tzaDelegate = self
+            }
+        }
     }
-    */
+
 
 }
 
+// MARK: Parse delegate for PFLogInViewController
 extension TimeZonesTableViewController: PFLogInViewControllerDelegate {
     func logInViewController( controller: PFLogInViewController, didLogInUser user: PFUser ) -> Void {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -76,3 +86,36 @@ extension TimeZonesTableViewController: PFLogInViewControllerDelegate {
     }
     
 }
+
+// MARK: App TimeZone add delegate
+extension TimeZonesTableViewController: TimeZoneAddDelegate {
+    
+    func isZoneIDInList(zoneID: String?) -> Bool {
+        var result = false
+        if let zid = zoneID, objects = objects {
+            // scan objects array for one with the supplied ZID
+            print("TZAD: Filtering \(objects.count) objects for ID=\(zid)")
+            let found = (objects.filter({ object in
+                return (object["name"] as? String) == zid
+            }))
+            if found.count > 0 {
+                result = true
+            }
+        } else {
+            print("TZAD: No objects in array.")
+        }
+        return result
+    }
+    
+    func saveZoneIDToList(zoneID: String) -> Bool {
+        if let user = PFUser.currentUser() {
+            let username = user.username ?? "Anonymous"
+            print("TZAD: Save queued for \(zoneID) for user \(username)")
+            return true
+        } else {
+            print("TZAD: No user logged in, cannot save \(zoneID).")
+        }
+        return false
+    }
+}
+

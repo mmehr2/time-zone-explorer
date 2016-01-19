@@ -11,7 +11,10 @@ import Parse
 import ParseUI
 
 protocol TimeZoneAddDelegate {
+    // check if a zone exists in the list, returns T if in the list, false otherwise
     func isZoneIDInList(zoneID: String?) -> Bool
+    // add a specific zone to the list, returns T if successfully queued to add, false otherwise
+    func saveZoneIDToList(zoneID: String) -> Bool
 }
 
 class AddTimeZonesTableViewController: PFQueryTableViewController {
@@ -123,7 +126,10 @@ class AddTimeZonesTableViewController: PFQueryTableViewController {
     // MARK: - Actions
     
     @IBAction func saveButtonPressed(sender: AnyObject) {
-        print("Saving ID=\(selectedZoneID) to user's list.")
+        if let selectedZoneID = selectedZoneID {
+            print("Saving ID=\(selectedZoneID) to user's list.")
+            tzaDelegate?.saveZoneIDToList(selectedZoneID)
+        }
     }
     
     /*

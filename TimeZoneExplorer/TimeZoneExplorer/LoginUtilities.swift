@@ -35,14 +35,22 @@ class TZClient {
         return TZClient.getLoginState() == .Authenticated
     }
     
-    enum Role {
+    enum Role : CustomStringConvertible {
         case User
         case Manager
         case Administrator
+    
+        var description: String {
+            switch self {
+            case .User: return "User"
+            case .Manager: return "Manager"
+            case .Administrator: return "Administrator"
+            }
+        }
     }
     
     static var role: Role {
-        // TBD: figure out from PFUser role
+        // TBD: figure out from current PFUser role
         return Role.User
     }
     
@@ -55,6 +63,15 @@ class TZClient {
         }
         logInController.delegate = (presentingVC as! PFLogInViewControllerDelegate)
         return logInController
+    }
+
+    static var username: String {
+        if TZClient.loggedIn {
+            let user = PFUser.currentUser()!
+            let username = user.username ?? "Anonymous"
+            return username
+        }
+        return "UserIsNotLoggedIn"
     }
 
 }

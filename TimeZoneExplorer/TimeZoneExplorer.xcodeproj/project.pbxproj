@@ -32,6 +32,7 @@
 		A6EF14911C4CF504000658B1 /* LoginUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF14901C4CF504000658B1 /* LoginUtilities.swift */; };
 		A6EF14941C4D0530000658B1 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF14931C4D0530000658B1 /* UsersTableViewController.swift */; };
 		A6EF14961C4DCEAE000658B1 /* TimeZoneUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF14951C4DCEAE000658B1 /* TimeZoneUtilities.swift */; };
+		A6EF14991C4DED48000658B1 /* ClientVMUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF14981C4DED48000658B1 /* ClientVMUtilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		A6EF14901C4CF504000658B1 /* LoginUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUtilities.swift; sourceTree = "<group>"; };
 		A6EF14931C4D0530000658B1 /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		A6EF14951C4DCEAE000658B1 /* TimeZoneUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneUtilities.swift; sourceTree = "<group>"; };
+		A6EF14981C4DED48000658B1 /* ClientVMUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientVMUtilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				A6EF14951C4DCEAE000658B1 /* TimeZoneUtilities.swift */,
+				A6EF14981C4DED48000658B1 /* ClientVMUtilities.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6EF14991C4DED48000658B1 /* ClientVMUtilities.swift in Sources */,
 				A6EF14911C4CF504000658B1 /* LoginUtilities.swift in Sources */,
 				A6EF148F1C4CE316000658B1 /* TimeZonesTableViewController.swift in Sources */,
 				A6EF148B1C4CDAC0000658B1 /* AddTimeZonesTableViewController.swift in Sources */,
