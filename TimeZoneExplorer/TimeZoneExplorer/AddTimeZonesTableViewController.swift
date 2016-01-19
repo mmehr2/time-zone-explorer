@@ -132,15 +132,24 @@ class AddTimeZonesTableViewController: PFQueryTableViewController {
         }
     }
     
-    /*
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     // Get the new view controller using segue.destinationViewController.
     // Pass the selected object to the new view controller.
+        if segue.identifier == "SelectMasterTimeZoneSegue" {
+            if let cell = sender as? PFTableViewCell,
+                let dvc = segue.destinationViewController as? TimeZoneDetailsViewController,
+                let indexPath = tableView.indexPathForCell(cell),
+                let object = objects?[indexPath.row],
+                let name = object["name"] as? String {
+                    dvc.zoneID = name
+            }
+        }
     }
-    */
+    
     
 }
 

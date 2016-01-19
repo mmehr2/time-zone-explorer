@@ -157,7 +157,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="wue-JH-zg1" kind="show" trigger="accessoryAction" id="4It-vA-m3d"/>
+                                    <segue destination="wue-JH-zg1" kind="show" identifier="SelectMasterTimeZoneSegue" trigger="accessoryAction" id="4It-vA-m3d"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -193,7 +193,7 @@
         <!--TimeZoneDetails-->
         <scene sceneID="7x8-uM-dlq">
             <objects>
-                <viewController title="TimeZoneDetails" id="wue-JH-zg1" sceneMemberID="viewController">
+                <viewController title="TimeZoneDetails" id="wue-JH-zg1" customClass="TimeZoneDetailsViewController" customModule="TimeZoneExplorer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fN1-2J-Jlu"/>
                         <viewControllerLayoutGuide type="bottom" id="DbH-c2-1X2"/>
@@ -201,8 +201,194 @@
                     <view key="view" contentMode="scaleToFill" id="gbZ-1Y-gEy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="EOD-If-dnx" userLabel="Name Stack VView">
+                                <rect key="frame" x="20" y="102" width="560" height="441"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="z5B-Dc-Gml" userLabel="Area Stack HView">
+                                        <rect key="frame" x="0.0" y="0.0" width="436" height="63"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area (Continent, Ocean, Etc)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAb-qR-q99">
+                                                <rect key="frame" x="0.0" y="0.0" width="218" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Typical TZ Continent" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glW-g4-uYq">
+                                                <rect key="frame" x="218" y="0.0" width="218" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" tag="1" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rpW-s4-gIf" userLabel="Region Stack HView">
+                                        <rect key="frame" x="0.0" y="63" width="436" height="63"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Region (Country or State)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1z-Bw-Nuw">
+                                                <rect key="frame" x="0.0" y="0.0" width="218" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Typical TZ Region (OPT)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngk-xb-Xds">
+                                                <rect key="frame" x="218" y="0.0" width="218" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qso-h0-GZI" userLabel="City Stack HView">
+                                        <rect key="frame" x="0.0" y="126" width="436" height="63"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPw-yk-2NY">
+                                                <rect key="frame" x="0.0" y="0.0" width="218" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Typical TZ City Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TH-eM-M5S">
+                                                <rect key="frame" x="218" y="0.0" width="218" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cbp-6F-pyR" userLabel="Std Abbrev Offset Stack HView">
+                                        <rect key="frame" x="0.0" y="189" width="468" height="63"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Standard Abbreviation" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klz-U8-I23">
+                                                <rect key="frame" x="0.0" y="0.0" width="117" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="GMT+2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caX-zh-4hL">
+                                                <rect key="frame" x="117" y="0.0" width="117" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Standard Time Offset" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7k-FX-yTD">
+                                                <rect key="frame" x="234" y="0.0" width="117" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="+10:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHm-Ex-ujE">
+                                                <rect key="frame" x="351" y="0.0" width="117" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" tag="2" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mnJ-8R-3kV" userLabel="Dst Abbrev Offset Stack HView">
+                                        <rect key="frame" x="0.0" y="252" width="440" height="63"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daylight Abbreviation" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEB-VU-Jdg">
+                                                <rect key="frame" x="0.0" y="0.0" width="110" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="GMT+2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ItY-Ui-OKx">
+                                                <rect key="frame" x="110" y="0.0" width="110" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daylight Time Offset" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjs-5g-A7n">
+                                                <rect key="frame" x="220" y="0.0" width="110" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="+10:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ng7-VT-N39">
+                                                <rect key="frame" x="330" y="0.0" width="110" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Url-xC-1L0" userLabel="Current Date Stack HView">
+                                        <rect key="frame" x="0.0" y="315" width="348" height="63"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Date and Time" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xT-Pl-XH8">
+                                                <rect key="frame" x="0.0" y="0.0" width="174" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Typical TZ Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmz-ev-7NR">
+                                                <rect key="frame" x="174" y="0.0" width="174" height="63"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bRq-OV-k2t" userLabel="Current Time Stack HView">
+                                        <rect key="frame" x="0.0" y="378" width="312" height="63"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="760" verticalCompressionResistancePriority="752" misplaced="YES" text="10:23:45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNt-ao-pgQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="156" height="63"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wb5-UE-wn9">
+                                                <rect key="frame" x="156" y="0.0" width="156" height="63"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" misplaced="YES" text="PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9k-oY-EKx">
+                                                        <rect key="frame" x="0.0" y="0.0" width="156" height="32"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" misplaced="YES" text="PST" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nk1-id-bhS">
+                                                        <rect key="frame" x="0.0" y="32" width="156" height="31"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="nPw-yk-2NY" firstAttribute="width" secondItem="iAb-qR-q99" secondAttribute="width" id="8BY-uc-uTZ"/>
+                                    <constraint firstItem="b1z-Bw-Nuw" firstAttribute="width" secondItem="iAb-qR-q99" secondAttribute="width" id="WZf-Fh-Sgp"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="EOD-If-dnx" secondAttribute="trailing" constant="20" symbolic="YES" id="4Ms-qn-87j"/>
+                            <constraint firstItem="EOD-If-dnx" firstAttribute="leading" secondItem="gbZ-1Y-gEy" secondAttribute="leading" constant="20" symbolic="YES" id="4hp-le-uZL"/>
+                            <constraint firstItem="EOD-If-dnx" firstAttribute="top" secondItem="fN1-2J-Jlu" secondAttribute="bottom" constant="8" symbolic="YES" id="9YG-w6-xz8"/>
+                            <constraint firstItem="DbH-c2-1X2" firstAttribute="top" secondItem="EOD-If-dnx" secondAttribute="bottom" constant="8" symbolic="YES" id="LLF-1o-ej6"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="areaName" destination="glW-g4-uYq" id="LHv-XD-GEy"/>
+                        <outlet property="cityName" destination="0TH-eM-M5S" id="VAV-kG-1Zg"/>
+                        <outlet property="currentClockAMPM" destination="g9k-oY-EKx" id="6wR-jg-nPS"/>
+                        <outlet property="currentClockZone" destination="Nk1-id-bhS" id="euE-0r-M33"/>
+                        <outlet property="currentDateField" destination="Qmz-ev-7NR" id="Ecr-Ij-4Bo"/>
+                        <outlet property="currentTimeClock" destination="ZNt-ao-pgQ" id="5gG-Z5-Gkd"/>
+                        <outlet property="dstStack" destination="mnJ-8R-3kV" id="7gb-Pn-OPo"/>
+                        <outlet property="dstTimeAbbrev" destination="ItY-Ui-OKx" id="bcP-Ke-1mh"/>
+                        <outlet property="dstTimeOffset" destination="Ng7-VT-N39" id="gjp-6r-co7"/>
+                        <outlet property="regionName" destination="ngk-xb-Xds" id="er7-z2-z6x"/>
+                        <outlet property="regionStack" destination="rpW-s4-gIf" id="7XG-IQ-ZYq"/>
+                        <outlet property="stdTimeAbbrev" destination="caX-zh-4hL" id="ioL-73-rct"/>
+                        <outlet property="stdTimeOffset" destination="xHm-Ex-ujE" id="1Zv-8Z-Jqy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Qq-mI-voP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -267,6 +453,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="4pg-B0-4mi"/>
-        <segue reference="J8M-Ni-Z2g"/>
+        <segue reference="4It-vA-m3d"/>
     </inferredMetricsTieBreakers>
 </document>
