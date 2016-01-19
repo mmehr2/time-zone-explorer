@@ -12,6 +12,8 @@ class TimeZoneDetailsViewController: UIViewController {
 
     var zoneID: String!
     
+    private var timer: NSTimer! // the ticking clock
+    
     @IBOutlet weak var areaName: UILabel!
     @IBOutlet weak var regionName: UILabel!
     @IBOutlet weak var cityName: UILabel!
@@ -31,15 +33,43 @@ class TimeZoneDetailsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        fillOutFields(zoneID)
+        fillOutFields()
+        
+        // set up the 1-second timer initially
+        // NOTE: moved to viewWillAppear()
+    }
+    
+    private func startTimer() {
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateClock"), userInfo: nil, repeats: true)
+        print("Started 1 second timer for clock update")
+    }
+    
+    private func stopTimer() {
+        timer.invalidate()
+        print("Stopped timer")
     }
 
+    func updateClock() {
+        // redisplay just the clock field, including date, time, ampm, and zone abbrev (might change)
+        fillOutClockFields()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopTimer()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        startTimer()
+    }
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    private func fillOutFields(zoneID: String) {
+    private func fillOutFields() {
         // format and show the names parsed from the time zone ID
         let (area, region, city) = TZTimeZone.getDetailedName(zoneID)
         areaName.text = area
@@ -61,6 +91,12 @@ class TimeZoneDetailsViewController: UIViewController {
         dstTimeOffset.text = offsetDstStr
         dstStack.hidden = (abbrevD == nil)
         
+        // update the clock initially here too
+        fillOutClockFields()
+    }
+    
+    private func fillOutClockFields() {
+       
         // format and show the current time
         let now = NSDate()
         let (currentDate, clock, ampm, abbrev) = TZTimeZone.getClock(now, formattedForZone: zoneID)
@@ -68,8 +104,6 @@ class TimeZoneDetailsViewController: UIViewController {
         currentTimeClock.text = clock
         currentClockAMPM.text = ampm
         currentClockZone.text  = abbrev
-        
-        //self.view.needsUpdateConstraints()
     }
 
     /*
