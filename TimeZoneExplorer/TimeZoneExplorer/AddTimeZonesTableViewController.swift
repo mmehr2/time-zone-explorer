@@ -28,7 +28,6 @@ class AddTimeZonesTableViewController: PFQueryTableViewController {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.scopeButtonTitles = []
         searchController.searchBar.delegate = self
         searchController.searchBar.sizeToFit()
         
@@ -37,6 +36,21 @@ class AddTimeZonesTableViewController: PFQueryTableViewController {
         // add search bar to UI as header view
         tableView.tableHeaderView = searchController.searchBar
     }
+    
+    // FIX TO PREVENT UISEARCHCONTROLLER BUG
+    /*
+    Bug displays this error:
+    2016-01-18 14:04:32.251 TimeZoneExplorer[50766:676731] Attempting to load the view of a view controller while it is deallocating is not allowed and may result in undefined behavior (<UISearchController: 0x7fa172757860>)
+    Fix comes from here:
+    http://stackoverflow.com/questions/32282401/attempting-to-load-the-view-of-a-view-controller-while-it-is-deallocating-uis
+    */
+    deinit{
+        if let superView = searchController.view.superview
+        {
+            superView.removeFromSuperview()
+        }
+    }
+    // END BUG FIX
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
