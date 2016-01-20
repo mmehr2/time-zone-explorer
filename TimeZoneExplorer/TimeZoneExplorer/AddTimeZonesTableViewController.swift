@@ -19,6 +19,21 @@ protocol TimeZoneAddDelegate {
 
 class AddTimeZonesTableViewController: PFQueryTableViewController {
     
+    // Names for relevant external constants (storyboard, Parse, etc.)
+    // NOTE: This pattern allows compiler to check use of things, avoiding string typos and misuse
+    enum DataClassNames: String {
+        case Main = "TimeZones" // PARSE class
+    }
+    
+    enum SegueNames: String {
+        case Display = "SelectMasterTimeZoneSegue"
+    }
+    
+    enum CellNames: String {
+        case Main = "MasterTimeZoneCell"
+    }
+    
+    
     var tzaDelegate: TimeZoneAddDelegate?
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -79,12 +94,12 @@ class AddTimeZonesTableViewController: PFQueryTableViewController {
             }()
         // NOTE: these lines were shown before the previous, but only work if called after
         // If not included, the bug is still there, but with the call to loadViewIfNeeded(), the bug goes away
-        if #available(iOS 9.0, *) {
+     //   if #available(iOS 9.0, *) {
             self.searchController.loadViewIfNeeded()// iOS 9
-        } else {
-            // Fallback on earlier versions
-            let _ = self.searchController.view          // iOS 8
-        }
+//        } else {
+//            // Fallback on earlier versions
+//            let _ = self.searchController.view          // iOS 8
+//        }
         // END OF BUGFIX
         
         // "also a good idea" on original source's discussion of this (not related to bugfix)
@@ -102,7 +117,7 @@ class AddTimeZonesTableViewController: PFQueryTableViewController {
 
     // Parse query to get objects from the cloud
     override func queryForTable() -> PFQuery {
-        let query = PFQuery(className: "TimeZones")
+        let query = PFQuery(className: DataClassNames.Main.rawValue)
         query.orderByAscending("name")
         if let searchString = searchString {
             // in order to get case-insensitive search, we need to use PFQuery's regex search options
@@ -139,7 +154,7 @@ class AddTimeZonesTableViewController: PFQueryTableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     // Get the new view controller using segue.destinationViewController.
     // Pass the selected object to the new view controller.
-        if segue.identifier == "SelectMasterTimeZoneSegue" {
+        if segue.identifier == SegueNames.Display.rawValue {
             if let cell = sender as? PFTableViewCell,
                 let dvc = segue.destinationViewController as? TimeZoneDetailsViewController,
                 let indexPath = tableView.indexPathForCell(cell),
@@ -158,9 +173,9 @@ extension AddTimeZonesTableViewController: UISearchResultsUpdating {
 
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         searchString = searchController.searchBar.text
-        if let searchString = searchString {
-            // TBD: search for the text string here
-            print("FILTER: Searching for {\(searchString)}")
+        if searchString != nil {
+            // search for the text string here
+            //print("FILTER: Searching for {\(searchString)}")
             // then trigger the reload of only the relevant data
             loadObjects() // uses the PFQuery defined by searchString to reload the table from Parse (internet required!)
         }
@@ -188,7 +203,7 @@ extension AddTimeZonesTableViewController {
 //    }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
-        let cellIdentifier = "MasterTimeZoneCell"
+        let cellIdentifier = CellNames.Main.rawValue
         
         var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? PFTableViewCell
         if cell == nil {

@@ -84,7 +84,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="TimeZoneCell" textLabel="gkr-Gz-dFI" style="IBUITableViewCellStyleDefault" id="VL5-jf-kSJ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="TimeZoneCell" textLabel="gkr-Gz-dFI" style="IBUITableViewCellStyleDefault" id="VL5-jf-kSJ" customClass="PFTableViewCell">
                                 <rect key="frame" x="0.0" y="122" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VL5-jf-kSJ" id="ZUF-ck-GSq">
@@ -101,7 +101,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="wue-JH-zg1" kind="showDetail" identifier="SelectTimeZoneSegue" trigger="accessoryAction" id="J8M-Ni-Z2g"/>
+                                    <segue destination="wue-JH-zg1" kind="show" identifier="SelectTimeZoneSegue" trigger="accessoryAction" id="WU1-Dw-jUz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

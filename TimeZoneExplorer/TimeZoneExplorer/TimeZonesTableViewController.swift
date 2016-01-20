@@ -12,6 +12,21 @@ import ParseUI
 
 class TimeZonesTableViewController: PFQueryTableViewController {
 
+    // Names for relevant external constants (storyboard, Parse, etc.)
+    // NOTE: This pattern allows compiler to check use of things, avoiding string typos and misuse
+    enum DataClassNames: String {
+        case Main = "MyTimeZones" // PARSE class
+    }
+    
+    enum SegueNames: String {
+        case Add = "AddTimeZoneSegue"
+        case Display = "SelectTimeZoneSegue"
+    }
+    
+    enum CellNames: String {
+        case Main = "TimeZoneCell"
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,10 +66,19 @@ class TimeZonesTableViewController: PFQueryTableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "AddTimeZoneSegue" {
+        if segue.identifier == SegueNames.Add.rawValue {
             // just need to specify ourselves as the TimeZoneAddDelegate to answer questions about our list
             if let dvc = segue.destinationViewController as? AddTimeZonesTableViewController {
                 dvc.tzaDelegate = self
+            }
+        }
+        if segue.identifier == SegueNames.Display.rawValue {
+            if let cell = sender as? PFTableViewCell,
+                let dvc = segue.destinationViewController as? TimeZoneDetailsViewController,
+                let indexPath = tableView.indexPathForCell(cell),
+                let object = objects?[indexPath.row],
+                let name = object["name"] as? String {
+                    dvc.zoneID = name
             }
         }
     }
@@ -62,7 +86,34 @@ class TimeZonesTableViewController: PFQueryTableViewController {
 
 }
 
-// TZClient extensions
+// MARK: table view data source (Parse override)
+extension TimeZonesTableViewController {
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
+        let cellIdentifier = CellNames.Main.rawValue
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? PFTableViewCell
+        if cell == nil {
+            cell = PFTableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+        }
+        
+        let zoneID = (object?["name"] as? String ?? "")
+        let formattedID = TZTimeZone.getStandardFormat(zoneID)
+        cell?.textLabel?.text = formattedID
+        
+        return cell
+    }
+
+    // row deletion
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            removeObjectAtIndexPath(indexPath) //PARSE
+        }
+    }
+    
+}
+
+// MARK: TZClient dependencies
 extension TimeZonesTableViewController {
     
     // hide the tab bar controller when in User role (does the toolbar leave too? I hope not...)
@@ -83,9 +134,17 @@ extension TimeZonesTableViewController {
     
 }
 
-// MARK: PARSE-related extensions
+// MARK: PARSE-related dependencies
 extension TimeZonesTableViewController {
     
+    // Parse query to get objects from the cloud
+    override func queryForTable() -> PFQuery {
+        let query = PFQuery(className: DataClassNames.Main.rawValue)
+        query.orderByAscending("name")
+        return query
+    }
+
+    // reload all the data objects from the cloud
     private func reload() {
         loadObjects() // through base class PFQueryTableViewController
     }
@@ -108,7 +167,7 @@ extension TimeZonesTableViewController {
     
 }
 
-// MARK: Parse delegate for PFLogInViewController
+// MARK: Parse dependenciy (delegate for PFLogInViewController)
 extension TimeZonesTableViewController: PFLogInViewControllerDelegate {
     func logInViewController( controller: PFLogInViewController, didLogInUser user: PFUser ) -> Void {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -143,7 +202,7 @@ extension TimeZonesTableViewController: TimeZoneAddDelegate {
             let username = user.username ?? "Anonymous"
             
             // PARSE: create the new object
-            let object = PFObject(className: "MyTimeZones")
+            let object = PFObject(className: DataClassNames.Main.rawValue)
             let ACL = PFACL(user: user)
             object.ACL = ACL
             object["name"] = zoneID
