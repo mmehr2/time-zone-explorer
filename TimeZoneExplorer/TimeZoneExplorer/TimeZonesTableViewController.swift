@@ -11,22 +11,6 @@ import Parse
 import ParseUI
 
 class TimeZonesTableViewController: PFQueryTableViewController {
-    
-    private func presentLoginScreen() {
-        if !TZClient.loggedIn {
-            let vc = TZClient.getLoginViewControllerFor(self)
-            self.presentViewController(vc, animated: true, completion: nil)
-        }
-        if TZClient.loggedIn {
-            self.navigationItem.prompt = TZClient.getFormattedUsernameTitle()
-        }
-    }
-
-    // hide the tab bar controller when in User role (does the toolbar leave too? I hope not...)
-    override var hidesBottomBarWhenPushed: Bool {
-        get {return false} // uncomment when role detection is working { return TZClient.role == .User }
-        set { super.hidesBottomBarWhenPushed = newValue }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +25,8 @@ class TimeZonesTableViewController: PFQueryTableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-       presentLoginScreen()
+        presentLoginScreen() // only if needed
+        reload()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,12 +36,14 @@ class TimeZonesTableViewController: PFQueryTableViewController {
     
     
     @IBAction func logOutPressed(sender: AnyObject) {
-        PFUser.logOut()
+        // user logout
+        logout()
+        
         //If logout succesful:
         navigationController?.popToRootViewControllerAnimated(false)
+        
         presentLoginScreen()
     }
-
     
     // MARK: - Navigation
 
@@ -75,6 +62,52 @@ class TimeZonesTableViewController: PFQueryTableViewController {
 
 }
 
+// TZClient extensions
+extension TimeZonesTableViewController {
+    
+    // hide the tab bar controller when in User role (does the toolbar leave too? I hope not...)
+    override var hidesBottomBarWhenPushed: Bool {
+        get {return false} // uncomment when role detection is working { return TZClient.role == .User }
+        set { super.hidesBottomBarWhenPushed = newValue }
+    }
+    
+    private func presentLoginScreen() {
+        if !TZClient.loggedIn {
+            let vc = TZClient.getLoginViewControllerFor(self)
+            self.presentViewController(vc, animated: true, completion: nil)
+        }
+        if TZClient.loggedIn {
+            self.navigationItem.prompt = TZClient.getFormattedUsernameTitle()
+        }
+    }
+    
+}
+
+// MARK: PARSE-related extensions
+extension TimeZonesTableViewController {
+    
+    private func reload() {
+        loadObjects() // through base class PFQueryTableViewController
+    }
+    
+    // UTILITY: return the PARSE object associated with a particular ID
+    private func findObjectWithID(zoneID: String) -> [PFObject] {
+        
+        guard let objects = objects else { return Array() }
+        
+        let found = (objects.filter({ object in
+            return (object["name"] as? String) == zoneID
+        }))
+        return found
+    }
+    
+    // log the current user out
+    private func logout() {
+        PFUser.logOut()
+    }
+    
+}
+
 // MARK: Parse delegate for PFLogInViewController
 extension TimeZonesTableViewController: PFLogInViewControllerDelegate {
     func logInViewController( controller: PFLogInViewController, didLogInUser user: PFUser ) -> Void {
@@ -87,7 +120,7 @@ extension TimeZonesTableViewController: PFLogInViewControllerDelegate {
     
 }
 
-// MARK: App TimeZone add delegate
+// MARK: App TimeZone Add delegate
 extension TimeZonesTableViewController: TimeZoneAddDelegate {
     
     func isZoneIDInList(zoneID: String?) -> Bool {
@@ -95,9 +128,7 @@ extension TimeZonesTableViewController: TimeZoneAddDelegate {
         if let zid = zoneID, objects = objects {
             // scan objects array for one with the supplied ZID
             print("TZAD: Filtering \(objects.count) objects for ID=\(zid)")
-            let found = (objects.filter({ object in
-                return (object["name"] as? String) == zid
-            }))
+            let found = findObjectWithID(zid)
             if found.count > 0 {
                 result = true
             }
@@ -110,6 +141,16 @@ extension TimeZonesTableViewController: TimeZoneAddDelegate {
     func saveZoneIDToList(zoneID: String) -> Bool {
         if let user = PFUser.currentUser() {
             let username = user.username ?? "Anonymous"
+            
+            // PARSE: create the new object
+            let object = PFObject(className: "MyTimeZones")
+            let ACL = PFACL(user: user)
+            object.ACL = ACL
+            object["name"] = zoneID
+            
+            // PARSE: send the object to the server on a background task
+            object.saveEventually()
+            
             print("TZAD: Save queued for \(zoneID) for user \(username)")
             return true
         } else {
