@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A68F880A1C50A4BC003D200D /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F88091C50A4BC003D200D /* UserDetailsViewController.swift */; };
 		A6CEA0F81C4851AA00B26548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA0F71C4851AA00B26548 /* AppDelegate.swift */; };
 		A6CEA0FD1C4851AA00B26548 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6CEA0FB1C4851AA00B26548 /* Main.storyboard */; };
 		A6CEA0FF1C4851AA00B26548 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6CEA0FE1C4851AA00B26548 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A68F88091C50A4BC003D200D /* UserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		A6CEA0F41C4851AA00B26548 /* TimeZoneExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeZoneExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CEA0F71C4851AA00B26548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6CEA0FC1C4851AA00B26548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				A6EF149A1C4DF367000658B1 /* TimeZoneDetailsViewController.swift */,
 				A6EF148A1C4CDAC0000658B1 /* AddTimeZonesTableViewController.swift */,
 				A6EF14931C4D0530000658B1 /* UsersTableViewController.swift */,
+				A68F88091C50A4BC003D200D /* UserDetailsViewController.swift */,
 				A6EF14971C4DCEBF000658B1 /* ViewModel */,
 				A6EF14921C4D034F000658B1 /* Model */,
 				A6CEA0FE1C4851AA00B26548 /* Assets.xcassets */,
@@ -415,6 +418,7 @@
 				A6EF149B1C4DF367000658B1 /* TimeZoneDetailsViewController.swift in Sources */,
 				A6CEA14E1C4855F200B26548 /* UIViewControllerExtension.swift in Sources */,
 				A6EF14941C4D0530000658B1 /* UsersTableViewController.swift in Sources */,
+				A68F880A1C50A4BC003D200D /* UserDetailsViewController.swift in Sources */,
 				A6EF14961C4DCEAE000658B1 /* TimeZoneUtilities.swift in Sources */,
 				A6CEA0F81C4851AA00B26548 /* AppDelegate.swift in Sources */,
 			);
