@@ -12,7 +12,7 @@ import ParseUI
 
 protocol TimeZoneAddDelegate {
     // check if a zone exists in the list, returns T if in the list, false otherwise
-    func isZoneIDInList(zoneID: String?) -> Bool
+    func isZoneIDInList(zoneID: String) -> Bool
     // add a specific zone to the list, returns T if successfully queued to add, false otherwise
     func saveZoneIDToList(zoneID: String) -> Bool
 }
@@ -44,7 +44,8 @@ class AddTimeZonesTableViewController: PFQueryTableViewController {
     // This also updates the prompt on the nav.item when set
     var selectedZoneID: String? {
         didSet {
-            let alreadyInList = tzaDelegate?.isZoneIDInList(selectedZoneID) ?? false// consult user's list
+            let testID = selectedZoneID ?? ""
+            let alreadyInList = tzaDelegate?.isZoneIDInList(testID) ?? false// consult user's list
             if let ZID = selectedZoneID {
                 // enable the save button only if the selected ID is NOT already in User's list
                 if alreadyInList {
@@ -110,6 +111,13 @@ class AddTimeZonesTableViewController: PFQueryTableViewController {
         selectedZoneID = nil
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // refresh the prompt
+        let xxx = selectedZoneID
+        selectedZoneID = xxx
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -144,6 +152,8 @@ class AddTimeZonesTableViewController: PFQueryTableViewController {
         if let selectedZoneID = selectedZoneID {
             print("Saving ID=\(selectedZoneID) to user's list.")
             tzaDelegate?.saveZoneIDToList(selectedZoneID)
+            // refresh the save button side effect
+            self.selectedZoneID = selectedZoneID
         }
     }
     

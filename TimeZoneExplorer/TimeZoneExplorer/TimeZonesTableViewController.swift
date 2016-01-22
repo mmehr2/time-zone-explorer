@@ -26,6 +26,11 @@ class TimeZonesTableViewController: PFQueryTableViewController {
     enum CellNames: String {
         case Main = "TimeZoneCell"
     }
+    
+    // NOTE: this variable will track the set of zones the user owns, caching it locally
+    // This is needed since the objects list itself is updated asynchronously over the network
+    //  and it's easier to just maintain this list for the TimeZoneAddDelegate's use.
+    private var myZoneNames = Set<String>();
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,8 +112,30 @@ extension TimeZonesTableViewController {
     // row deletion
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            removeObjectAtIndexPath(indexPath) //PARSE
+            // remove this object's name from our list too
+            if let name = objectAtIndexPath(indexPath)?["name"] as? String {
+                myZoneNames.remove(name)
+                //print("Removed list item \(name); now \(myZoneNames.count) names")
+            }
+            removeObjectAtIndexPath(indexPath) //PARSE (NOTE: changes which object is at path)
         }
+    }
+    
+    // table view object load
+    override func objectsDidLoad(error: NSError?) {
+        super.objectsDidLoad(error)
+        
+        myZoneNames = Set<String>()
+        guard error == nil else { return }
+        // we have a new objects table - make sure the names are kept up to date
+        if let objects = objects {
+            for object in objects {
+                if let name = object["name"] as? String {
+                    myZoneNames.insert(name)
+                }
+            }
+        }
+        //print("List has \(myZoneNames.count) objects: \(myZoneNames)")
     }
     
 }
@@ -182,18 +209,9 @@ extension TimeZonesTableViewController: PFLogInViewControllerDelegate {
 // MARK: App TimeZone Add delegate
 extension TimeZonesTableViewController: TimeZoneAddDelegate {
     
-    func isZoneIDInList(zoneID: String?) -> Bool {
-        var result = false
-        if let zid = zoneID, objects = objects {
-            // scan objects array for one with the supplied ZID
-            print("TZAD: Filtering \(objects.count) objects for ID=\(zid)")
-            let found = findObjectWithID(zid)
-            if found.count > 0 {
-                result = true
-            }
-        } else {
-            print("TZAD: No objects in array.")
-        }
+    func isZoneIDInList(zoneID: String) -> Bool {
+        let result = myZoneNames.contains(zoneID)
+        print("Checking \(zoneID) in list: \(result)")
         return result
     }
     
@@ -208,7 +226,9 @@ extension TimeZonesTableViewController: TimeZoneAddDelegate {
             object["name"] = zoneID
             
             // PARSE: send the object to the server on a background task
-            object.saveEventually()
+            object.saveEventually(nil)
+            // and make sure we remember the name even before the objects come back from a reload
+            myZoneNames.insert(zoneID)
             
             print("TZAD: Save queued for \(zoneID) for user \(username)")
             return true
