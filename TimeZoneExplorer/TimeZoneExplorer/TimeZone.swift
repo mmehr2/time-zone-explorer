@@ -32,7 +32,7 @@ class TZTimeZone {
 
     /// Takes an offset in seconds, splits it into component (hours, minutes, secs=0)
     static func splitTime( interval: NSTimeInterval ) -> (hours: Int, minutes: Int, seconds: Int) {
-        let offset = Int(Double(interval + 0.5))
+        let offset = Int(round(interval))
         let offabs = abs(offset)
         let offhours = offabs/3600
         let offmins = (offabs%3600) / 60
