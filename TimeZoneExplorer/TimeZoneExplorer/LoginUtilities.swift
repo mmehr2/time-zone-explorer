@@ -11,7 +11,7 @@ import Parse
 import ParseUI
 
 // needs of project for its User class (encompasses all roles: User, Manager, Administrator)
-class TZClient {
+extension TZClient {
 
     enum LoginState {
         case NoUser
@@ -33,6 +33,15 @@ class TZClient {
     
     static var loggedIn: Bool {
         return TZClient.getLoginState() == .Authenticated
+    }
+    
+    static func logoutCurrentUser() {
+        PFUser.logOut()
+    }
+    
+    static func loginUser(username: String, password: String, completion: ((TZClient?, String?) -> ())? = nil) {
+        PFUser.logInWithUsernameInBackground(username, password: password) { user, error in
+        }
     }
     
     enum Role : CustomStringConvertible {

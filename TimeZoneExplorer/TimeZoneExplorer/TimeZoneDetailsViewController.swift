@@ -89,6 +89,8 @@ class TimeZoneDetailsViewController: UIViewController {
         let offsetDstStr = TZTimeZone.getStandardFormatOffset(offsetD)
         dstTimeAbbrev.text = abbrevD
         dstTimeOffset.text = offsetDstStr
+        
+        // optionally hide the DST stack if it isn't different from STD time
         dstStack.hidden = (offsetS == offsetD)
         
         // update the clock initially here too
