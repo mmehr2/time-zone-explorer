@@ -89,7 +89,7 @@ class TimeZoneDetailsViewController: UIViewController {
         let offsetDstStr = TZTimeZone.getStandardFormatOffset(offsetD)
         dstTimeAbbrev.text = abbrevD
         dstTimeOffset.text = offsetDstStr
-        dstStack.hidden = (abbrevD == nil)
+        dstStack.hidden = (offsetS == offsetD)
         
         // update the clock initially here too
         fillOutClockFields()
