@@ -111,19 +111,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A68F88321C537E51003D200D /* ParseUI.framework in Frameworks */,
 				A6CEA1631C485AF900B26548 /* AudioToolbox.framework in Frameworks */,
 				A6CEA1641C485AF900B26548 /* CFNetwork.framework in Frameworks */,
 				A6CEA1651C485AF900B26548 /* CoreGraphics.framework in Frameworks */,
 				A6CEA1661C485AF900B26548 /* CoreLocation.framework in Frameworks */,
 				A6CEA1671C485AF900B26548 /* libsqlite3.tbd in Frameworks */,
 				A6CEA1681C485AF900B26548 /* libz.tbd in Frameworks */,
-				A68F88341C537E51003D200D /* Bolts.framework in Frameworks */,
 				A6CEA1691C485AF900B26548 /* QuartzCore.framework in Frameworks */,
 				A6CEA16A1C485AF900B26548 /* Security.framework in Frameworks */,
 				A6CEA16B1C485AF900B26548 /* StoreKit.framework in Frameworks */,
-				A68F88331C537E51003D200D /* Parse.framework in Frameworks */,
 				A6CEA16C1C485AF900B26548 /* SystemConfiguration.framework in Frameworks */,
+				A68F88341C537E51003D200D /* Bolts.framework in Frameworks */,
+				A68F88331C537E51003D200D /* Parse.framework in Frameworks */,
+				A68F88321C537E51003D200D /* ParseUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

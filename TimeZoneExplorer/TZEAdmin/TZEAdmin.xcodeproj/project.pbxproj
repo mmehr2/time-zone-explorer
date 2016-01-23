@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A68F88371C537F87003D200D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F88351C537F87003D200D /* Bolts.framework */; };
+		A68F88381C537F87003D200D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F88361C537F87003D200D /* Parse.framework */; };
+		A68F88431C53835C003D200D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F88391C53835C003D200D /* AudioToolbox.framework */; };
+		A68F88441C53835C003D200D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F883A1C53835C003D200D /* CFNetwork.framework */; };
+		A68F88451C53835C003D200D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F883B1C53835C003D200D /* CoreGraphics.framework */; };
+		A68F88461C53835C003D200D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F883C1C53835C003D200D /* CoreLocation.framework */; };
+		A68F88471C53835C003D200D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F883D1C53835C003D200D /* libsqlite3.tbd */; };
+		A68F88481C53835C003D200D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F883E1C53835C003D200D /* libz.tbd */; };
+		A68F88491C53835C003D200D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F883F1C53835C003D200D /* QuartzCore.framework */; };
+		A68F884A1C53835C003D200D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F88401C53835C003D200D /* Security.framework */; };
+		A68F884B1C53835C003D200D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F88411C53835C003D200D /* StoreKit.framework */; };
+		A68F884C1C53835C003D200D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F88421C53835C003D200D /* SystemConfiguration.framework */; };
+		A68F884D1C538501003D200D /* Bolts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A68F88351C537F87003D200D /* Bolts.framework */; };
+		A68F884E1C538501003D200D /* Parse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A68F88361C537F87003D200D /* Parse.framework */; };
 		A6CEA17F1C4AA75F00B26548 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA17E1C4AA75F00B26548 /* main.swift */; };
 		A6CEA18C1C4AD94500B26548 /* CreateNameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA18B1C4AD94500B26548 /* CreateNameData.swift */; };
 /* End PBXBuildFile section */
@@ -14,16 +28,30 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		A6CEA1791C4AA75F00B26548 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = Debug;
+			dstSubfolderSpec = 16;
 			files = (
+				A68F884D1C538501003D200D /* Bolts.framework in CopyFiles */,
+				A68F884E1C538501003D200D /* Parse.framework in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A68F88351C537F87003D200D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = TZEAdmin/Bolts.framework; sourceTree = "<group>"; };
+		A68F88361C537F87003D200D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = TZEAdmin/Parse.framework; sourceTree = "<group>"; };
+		A68F88391C53835C003D200D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A68F883A1C53835C003D200D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A68F883B1C53835C003D200D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A68F883C1C53835C003D200D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A68F883D1C53835C003D200D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		A68F883E1C53835C003D200D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A68F883F1C53835C003D200D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A68F88401C53835C003D200D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A68F88411C53835C003D200D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		A68F88421C53835C003D200D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A6CEA17B1C4AA75F00B26548 /* TZEAdmin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TZEAdmin; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CEA17E1C4AA75F00B26548 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A6CEA18B1C4AD94500B26548 /* CreateNameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNameData.swift; sourceTree = "<group>"; };
@@ -35,15 +63,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A68F88431C53835C003D200D /* AudioToolbox.framework in Frameworks */,
+				A68F88441C53835C003D200D /* CFNetwork.framework in Frameworks */,
+				A68F88451C53835C003D200D /* CoreGraphics.framework in Frameworks */,
+				A68F88461C53835C003D200D /* CoreLocation.framework in Frameworks */,
+				A68F88471C53835C003D200D /* libsqlite3.tbd in Frameworks */,
+				A68F88481C53835C003D200D /* libz.tbd in Frameworks */,
+				A68F88491C53835C003D200D /* QuartzCore.framework in Frameworks */,
+				A68F884A1C53835C003D200D /* Security.framework in Frameworks */,
+				A68F884B1C53835C003D200D /* StoreKit.framework in Frameworks */,
+				A68F884C1C53835C003D200D /* SystemConfiguration.framework in Frameworks */,
+				A68F88381C537F87003D200D /* Parse.framework in Frameworks */,
+				A68F88371C537F87003D200D /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A68F884F1C538982003D200D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A68F88391C53835C003D200D /* AudioToolbox.framework */,
+				A68F883A1C53835C003D200D /* CFNetwork.framework */,
+				A68F883B1C53835C003D200D /* CoreGraphics.framework */,
+				A68F883C1C53835C003D200D /* CoreLocation.framework */,
+				A68F883D1C53835C003D200D /* libsqlite3.tbd */,
+				A68F88351C537F87003D200D /* Bolts.framework */,
+				A68F88361C537F87003D200D /* Parse.framework */,
+				A68F883E1C53835C003D200D /* libz.tbd */,
+				A68F883F1C53835C003D200D /* QuartzCore.framework */,
+				A68F88401C53835C003D200D /* Security.framework */,
+				A68F88411C53835C003D200D /* StoreKit.framework */,
+				A68F88421C53835C003D200D /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A6CEA1721C4AA75F00B26548 = {
 			isa = PBXGroup;
 			children = (
+				A68F884F1C538982003D200D /* Frameworks */,
 				A6CEA17D1C4AA75F00B26548 /* TZEAdmin */,
 				A6CEA17C1C4AA75F00B26548 /* Products */,
 			);
@@ -215,6 +275,10 @@
 		A6CEA1831C4AA75F00B26548 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TZEAdmin",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -222,6 +286,10 @@
 		A6CEA1841C4AA75F00B26548 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TZEAdmin",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -245,6 +313,7 @@
 				A6CEA1841C4AA75F00B26548 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
