@@ -16,6 +16,7 @@
 		A68F88511C538D10003D200D /* TZLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F88501C538D10003D200D /* TZLogInViewController.swift */; };
 		A68F88531C538E4F003D200D /* TZSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F88521C538E4F003D200D /* TZSignUpViewController.swift */; };
 		A68F88551C539AC4003D200D /* LookAndFeel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F88541C539AC4003D200D /* LookAndFeel.swift */; };
+		A68F88571C53A855003D200D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F88561C53A855003D200D /* UIColor+Extensions.swift */; };
 		A6CEA0F81C4851AA00B26548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA0F71C4851AA00B26548 /* AppDelegate.swift */; };
 		A6CEA0FD1C4851AA00B26548 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6CEA0FB1C4851AA00B26548 /* Main.storyboard */; };
 		A6CEA0FF1C4851AA00B26548 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6CEA0FE1C4851AA00B26548 /* Assets.xcassets */; };
@@ -77,6 +78,7 @@
 		A68F88501C538D10003D200D /* TZLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZLogInViewController.swift; sourceTree = "<group>"; };
 		A68F88521C538E4F003D200D /* TZSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZSignUpViewController.swift; sourceTree = "<group>"; };
 		A68F88541C539AC4003D200D /* LookAndFeel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookAndFeel.swift; sourceTree = "<group>"; };
+		A68F88561C53A855003D200D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		A6CEA0F41C4851AA00B26548 /* TimeZoneExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeZoneExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CEA0F71C4851AA00B26548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6CEA0FC1C4851AA00B26548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				A6CEA0F71C4851AA00B26548 /* AppDelegate.swift */,
+				A68F88561C53A855003D200D /* UIColor+Extensions.swift */,
 				A6CEA1461C4855F200B26548 /* UIViewControllerExtension.swift */,
 				A6CEA1701C48B81C00B26548 /* Storyboards */,
 				A68F88521C538E4F003D200D /* TZSignUpViewController.swift */,
@@ -436,6 +439,7 @@
 				A6CEA14E1C4855F200B26548 /* UIViewControllerExtension.swift in Sources */,
 				A6EF14941C4D0530000658B1 /* UsersTableViewController.swift in Sources */,
 				A68F88511C538D10003D200D /* TZLogInViewController.swift in Sources */,
+				A68F88571C53A855003D200D /* UIColor+Extensions.swift in Sources */,
 				A68F880A1C50A4BC003D200D /* UserDetailsViewController.swift in Sources */,
 				A6EF14961C4DCEAE000658B1 /* TimeZoneUtilities.swift in Sources */,
 				A68F88531C538E4F003D200D /* TZSignUpViewController.swift in Sources */,

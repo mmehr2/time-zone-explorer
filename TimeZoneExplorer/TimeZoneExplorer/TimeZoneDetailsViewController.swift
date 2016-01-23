@@ -37,6 +37,23 @@ class TimeZoneDetailsViewController: UIViewController {
         
         // set up the 1-second timer initially
         // NOTE: moved to viewWillAppear()
+        
+        // text color adjustments
+        self.view.backgroundColor = SystemLook.mediumColor
+        
+        let fieldColor = SystemLook.lightColor
+        areaName.textColor = fieldColor
+        regionName.textColor = fieldColor
+        cityName.textColor = fieldColor
+        stdTimeAbbrev.textColor = fieldColor
+        stdTimeOffset.textColor = fieldColor
+        dstTimeAbbrev.textColor = fieldColor
+        dstTimeOffset.textColor = fieldColor
+        currentDateField.textColor = fieldColor
+        areaName.textColor = fieldColor
+        currentTimeClock.textColor = fieldColor
+        currentClockAMPM.textColor = fieldColor
+        currentClockZone.textColor = fieldColor
     }
     
     private func startTimer() {

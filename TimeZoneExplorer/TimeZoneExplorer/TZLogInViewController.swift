@@ -16,7 +16,7 @@ class TZLogInViewController: PFLogInViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = SystemLook.getBackgroundColor()
+        view.backgroundColor = SystemLook.darkColor
         
         let label = SystemLook.getLogo()
         logInView?.logo = label

@@ -12,7 +12,7 @@ class SystemLook {
     
     static func getLogo() -> UIView {
         let label = UILabel()
-        label.textColor = UIColor.whiteColor()
+        label.textColor = lightColor
         label.text = "Time Zone Explorer"
         label.font = UIFont(name: "HelveticaNeue-UltraLight", size: 48) //.systemFontOfSize(40)
         label.numberOfLines = 2
@@ -23,8 +23,16 @@ class SystemLook {
         return label
     }
     
-    static func getBackgroundColor() -> UIColor {
-        return UIColor.blueColor()
+    static var darkColor: UIColor {
+        return UIColor.midnight()
+    }
+    
+    static var mediumColor: UIColor {
+        return UIColor.sky()
+    }
+    
+    static var lightColor: UIColor {
+        return UIColor.banana()
     }
     
 }
