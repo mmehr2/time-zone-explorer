@@ -29,6 +29,15 @@ class TimeZoneDetailsViewController: UIViewController {
     @IBOutlet weak var regionStack: UIStackView!
     @IBOutlet weak var dstStack: UIStackView!
     
+    @IBOutlet weak var areaNameLabel: UILabel!
+    @IBOutlet weak var regionNameLabel: UILabel!
+    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var stdTimeAbbrevLabel: UILabel!
+    @IBOutlet weak var stdTimeOffsetLabel: UILabel!
+    @IBOutlet weak var dstTimeAbbrevLabel: UILabel!
+    @IBOutlet weak var dstTimeOffsetLabel: UILabel!
+    @IBOutlet weak var currentDateFieldLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +50,16 @@ class TimeZoneDetailsViewController: UIViewController {
         // text color adjustments
         self.view.backgroundColor = SystemLook.mediumColor
         
+        let labelColor = SystemLook.darkColor
+        areaNameLabel.textColor = labelColor
+        regionNameLabel.textColor = labelColor
+        cityNameLabel.textColor = labelColor
+        stdTimeAbbrevLabel.textColor = labelColor
+        stdTimeOffsetLabel.textColor = labelColor
+        dstTimeAbbrevLabel.textColor = labelColor
+        dstTimeOffsetLabel.textColor = labelColor
+        currentDateFieldLabel.textColor = labelColor
+        
         let fieldColor = SystemLook.lightColor
         areaName.textColor = fieldColor
         regionName.textColor = fieldColor
@@ -50,7 +69,6 @@ class TimeZoneDetailsViewController: UIViewController {
         dstTimeAbbrev.textColor = fieldColor
         dstTimeOffset.textColor = fieldColor
         currentDateField.textColor = fieldColor
-        areaName.textColor = fieldColor
         currentTimeClock.textColor = fieldColor
         currentClockAMPM.textColor = fieldColor
         currentClockZone.textColor = fieldColor

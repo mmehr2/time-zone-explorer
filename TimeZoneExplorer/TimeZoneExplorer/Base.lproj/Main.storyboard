@@ -475,18 +475,26 @@
                     </view>
                     <connections>
                         <outlet property="areaName" destination="glW-g4-uYq" id="LHv-XD-GEy"/>
+                        <outlet property="areaNameLabel" destination="iAb-qR-q99" id="YiF-Zl-oeX"/>
                         <outlet property="cityName" destination="0TH-eM-M5S" id="VAV-kG-1Zg"/>
+                        <outlet property="cityNameLabel" destination="nPw-yk-2NY" id="PIY-wU-oxA"/>
                         <outlet property="currentClockAMPM" destination="g9k-oY-EKx" id="6wR-jg-nPS"/>
                         <outlet property="currentClockZone" destination="Nk1-id-bhS" id="euE-0r-M33"/>
                         <outlet property="currentDateField" destination="Qmz-ev-7NR" id="Ecr-Ij-4Bo"/>
+                        <outlet property="currentDateFieldLabel" destination="0xT-Pl-XH8" id="A25-P7-fok"/>
                         <outlet property="currentTimeClock" destination="ZNt-ao-pgQ" id="5gG-Z5-Gkd"/>
                         <outlet property="dstStack" destination="mnJ-8R-3kV" id="7gb-Pn-OPo"/>
                         <outlet property="dstTimeAbbrev" destination="ItY-Ui-OKx" id="bcP-Ke-1mh"/>
+                        <outlet property="dstTimeAbbrevLabel" destination="sEB-VU-Jdg" id="FMe-TP-HTa"/>
                         <outlet property="dstTimeOffset" destination="Ng7-VT-N39" id="gjp-6r-co7"/>
+                        <outlet property="dstTimeOffsetLabel" destination="zjs-5g-A7n" id="5Kn-9q-32F"/>
                         <outlet property="regionName" destination="ngk-xb-Xds" id="er7-z2-z6x"/>
+                        <outlet property="regionNameLabel" destination="b1z-Bw-Nuw" id="eCc-mu-6ZR"/>
                         <outlet property="regionStack" destination="rpW-s4-gIf" id="7XG-IQ-ZYq"/>
                         <outlet property="stdTimeAbbrev" destination="caX-zh-4hL" id="ioL-73-rct"/>
+                        <outlet property="stdTimeAbbrevLabel" destination="klz-U8-I23" id="zAB-Zm-gTd"/>
                         <outlet property="stdTimeOffset" destination="xHm-Ex-ujE" id="1Zv-8Z-Jqy"/>
+                        <outlet property="stdTimeOffsetLabel" destination="x7k-FX-yTD" id="5mw-ef-SOC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Qq-mI-voP" userLabel="First Responder" sceneMemberID="firstResponder"/>
