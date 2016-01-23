@@ -42,7 +42,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="User List" prompt="Mgr name goes here" id="Djo-A0-uKb">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="cH4-u2-9gx"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="cH4-u2-9gx">
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="Zt8-Dd-VyU" id="oEj-28-gpa"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xl7-fG-Zbl">
                             <connections>
                                 <segue destination="bnL-kr-G2Z" kind="show" identifier="AddUserDetailsSegue" id="09S-Np-B7S"/>

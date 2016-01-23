@@ -28,6 +28,15 @@ class UsersTableViewController: PFQueryTableViewController {
         case Main = "UserCell"
     }
     
+    @IBAction func logoutButtonPressed(sender: AnyObject) {
+        
+        logout()
+        
+        // switch back to the main Users tab for logout
+        tabBarController?.selectedIndex = 0
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -94,6 +103,7 @@ extension UsersTableViewController {
             // do NOT allow deletion of current user!
             let object = objectAtIndexPath(indexPath) as! PFUser
             if object.objectId != PFUser.currentUser()?.objectId {
+                print("Deleting user \(object.username ?? "Unknown")")
                 removeObjectAtIndexPath(indexPath) //PARSE
             }
         }
@@ -103,7 +113,7 @@ extension UsersTableViewController {
         var result = true
         // do NOT allow editing of current user!
         let object = objectAtIndexPath(indexPath) as! PFUser
-        if object.objectId != PFUser.currentUser()?.objectId {
+        if object.objectId == PFUser.currentUser()?.objectId {
             result = false
         }
         return result
@@ -137,9 +147,14 @@ extension UsersTableViewController {
         return found
     }
     
+}
+
+// MARK: Model dependencies
+extension UsersTableViewController {
+    
     // log the current user out
     private func logout() {
-        PFUser.logOut()
+        TZClient.logoutCurrentUser()
     }
     
 }
