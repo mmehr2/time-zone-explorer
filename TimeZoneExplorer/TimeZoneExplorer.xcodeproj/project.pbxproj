@@ -262,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				A6EF149C1C4EE0A3000658B1 /* TimeZone.swift */,
-				A6EF14901C4CF504000658B1 /* LoginUtilities.swift */,
 				A68F880B1C519B30003D200D /* Client.swift */,
 			);
 			name = Model;
@@ -272,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				A68F88541C539AC4003D200D /* LookAndFeel.swift */,
+				A6EF14901C4CF504000658B1 /* LoginUtilities.swift */,
 				A6EF14951C4DCEAE000658B1 /* TimeZoneUtilities.swift */,
 				A6EF14981C4DED48000658B1 /* ClientVMUtilities.swift */,
 			);
