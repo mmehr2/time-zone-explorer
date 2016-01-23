@@ -64,11 +64,12 @@ extension TZClient {
     }
     
     static func getLoginViewControllerFor(presentingVC: UIViewController) -> PFLogInViewController {
-        let logInController = PFLogInViewController()
+        let logInController = TZLogInViewController()
+        logInController.signUpController = TZSignUpViewController()
         if TZClient.loggedIn {
-            logInController.fields = [ .UsernameAndPassword, .DismissButton ]
+            logInController.fields = [ .UsernameAndPassword, .SignUpButton, .DismissButton ]
         } else {
-            logInController.fields = [ .UsernameAndPassword ]
+            logInController.fields = [ .UsernameAndPassword, .SignUpButton ]
         }
         logInController.delegate = (presentingVC as! PFLogInViewControllerDelegate)
         return logInController

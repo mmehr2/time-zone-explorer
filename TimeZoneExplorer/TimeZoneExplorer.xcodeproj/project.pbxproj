@@ -13,6 +13,9 @@
 		A68F88321C537E51003D200D /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F882F1C537E51003D200D /* ParseUI.framework */; };
 		A68F88331C537E51003D200D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F88301C537E51003D200D /* Parse.framework */; };
 		A68F88341C537E51003D200D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F88311C537E51003D200D /* Bolts.framework */; };
+		A68F88511C538D10003D200D /* TZLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F88501C538D10003D200D /* TZLogInViewController.swift */; };
+		A68F88531C538E4F003D200D /* TZSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F88521C538E4F003D200D /* TZSignUpViewController.swift */; };
+		A68F88551C539AC4003D200D /* LookAndFeel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F88541C539AC4003D200D /* LookAndFeel.swift */; };
 		A6CEA0F81C4851AA00B26548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA0F71C4851AA00B26548 /* AppDelegate.swift */; };
 		A6CEA0FD1C4851AA00B26548 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6CEA0FB1C4851AA00B26548 /* Main.storyboard */; };
 		A6CEA0FF1C4851AA00B26548 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6CEA0FE1C4851AA00B26548 /* Assets.xcassets */; };
@@ -71,6 +74,9 @@
 		A68F882F1C537E51003D200D /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		A68F88301C537E51003D200D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A68F88311C537E51003D200D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		A68F88501C538D10003D200D /* TZLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZLogInViewController.swift; sourceTree = "<group>"; };
+		A68F88521C538E4F003D200D /* TZSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZSignUpViewController.swift; sourceTree = "<group>"; };
+		A68F88541C539AC4003D200D /* LookAndFeel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookAndFeel.swift; sourceTree = "<group>"; };
 		A6CEA0F41C4851AA00B26548 /* TimeZoneExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeZoneExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CEA0F71C4851AA00B26548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6CEA0FC1C4851AA00B26548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -173,6 +179,8 @@
 				A6CEA0F71C4851AA00B26548 /* AppDelegate.swift */,
 				A6CEA1461C4855F200B26548 /* UIViewControllerExtension.swift */,
 				A6CEA1701C48B81C00B26548 /* Storyboards */,
+				A68F88521C538E4F003D200D /* TZSignUpViewController.swift */,
+				A68F88501C538D10003D200D /* TZLogInViewController.swift */,
 				A6EF148E1C4CE316000658B1 /* TimeZonesTableViewController.swift */,
 				A6EF149A1C4DF367000658B1 /* TimeZoneDetailsViewController.swift */,
 				A6EF148A1C4CDAC0000658B1 /* AddTimeZonesTableViewController.swift */,
@@ -263,6 +271,7 @@
 		A6EF14971C4DCEBF000658B1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A68F88541C539AC4003D200D /* LookAndFeel.swift */,
 				A6EF14951C4DCEAE000658B1 /* TimeZoneUtilities.swift */,
 				A6EF14981C4DED48000658B1 /* ClientVMUtilities.swift */,
 			);
@@ -420,13 +429,16 @@
 				A6EF14911C4CF504000658B1 /* LoginUtilities.swift in Sources */,
 				A68F880C1C519B30003D200D /* Client.swift in Sources */,
 				A6EF149D1C4EE0A3000658B1 /* TimeZone.swift in Sources */,
+				A68F88551C539AC4003D200D /* LookAndFeel.swift in Sources */,
 				A6EF148F1C4CE316000658B1 /* TimeZonesTableViewController.swift in Sources */,
 				A6EF148B1C4CDAC0000658B1 /* AddTimeZonesTableViewController.swift in Sources */,
 				A6EF149B1C4DF367000658B1 /* TimeZoneDetailsViewController.swift in Sources */,
 				A6CEA14E1C4855F200B26548 /* UIViewControllerExtension.swift in Sources */,
 				A6EF14941C4D0530000658B1 /* UsersTableViewController.swift in Sources */,
+				A68F88511C538D10003D200D /* TZLogInViewController.swift in Sources */,
 				A68F880A1C50A4BC003D200D /* UserDetailsViewController.swift in Sources */,
 				A6EF14961C4DCEAE000658B1 /* TimeZoneUtilities.swift in Sources */,
+				A68F88531C538E4F003D200D /* TZSignUpViewController.swift in Sources */,
 				A6CEA0F81C4851AA00B26548 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
