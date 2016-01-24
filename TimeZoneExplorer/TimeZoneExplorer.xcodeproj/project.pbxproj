@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A68205741C54422100C16908 /* TZSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68205731C54422100C16908 /* TZSystem.swift */; };
 		A68F880A1C50A4BC003D200D /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F88091C50A4BC003D200D /* UserDetailsViewController.swift */; };
 		A68F880C1C519B30003D200D /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F880B1C519B30003D200D /* Client.swift */; };
 		A68F880E1C521474003D200D /* TimeZoneUtilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F880D1C521474003D200D /* TimeZoneUtilitiesTests.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A68205731C54422100C16908 /* TZSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZSystem.swift; sourceTree = "<group>"; };
 		A68F88091C50A4BC003D200D /* UserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		A68F880B1C519B30003D200D /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		A68F880D1C521474003D200D /* TimeZoneUtilitiesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneUtilitiesTests.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 		A6EF14921C4D034F000658B1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A68205731C54422100C16908 /* TZSystem.swift */,
 				A6EF149C1C4EE0A3000658B1 /* TimeZone.swift */,
 				A68F880B1C519B30003D200D /* Client.swift */,
 			);
@@ -441,6 +444,7 @@
 				A68F88511C538D10003D200D /* TZLogInViewController.swift in Sources */,
 				A68F88571C53A855003D200D /* UIColor+Extensions.swift in Sources */,
 				A68F880A1C50A4BC003D200D /* UserDetailsViewController.swift in Sources */,
+				A68205741C54422100C16908 /* TZSystem.swift in Sources */,
 				A6EF14961C4DCEAE000658B1 /* TimeZoneUtilities.swift in Sources */,
 				A68F88531C538E4F003D200D /* TZSignUpViewController.swift in Sources */,
 				A6CEA0F81C4851AA00B26548 /* AppDelegate.swift in Sources */,
