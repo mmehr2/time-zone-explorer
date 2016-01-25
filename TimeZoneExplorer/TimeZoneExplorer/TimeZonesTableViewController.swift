@@ -16,6 +16,7 @@ class TimeZonesTableViewController: PFQueryTableViewController {
     // NOTE: This pattern allows compiler to check use of things, avoiding string typos and misuse
     enum DataClassNames: String {
         case Main = "MyTimeZones" // PARSE class
+        case MainPrimaryKey = "name"
     }
     
     enum SegueNames: String {
@@ -241,14 +242,12 @@ extension TimeZonesTableViewController: TimeZoneAddDelegate {
     }
     
     func saveZoneIDToList(zoneID: String) -> Bool {
-        if let user = PFUser.currentUser() {
-            let username = user.username ?? "Anonymous"
+        if TZClient.loggedIn {
+            let username = TZClient.username
             
             // PARSE: create the new object
-            let object = PFObject(className: DataClassNames.Main.rawValue)
-            let ACL = PFACL(user: user)
-            object.ACL = ACL
-            object["name"] = zoneID
+            let object = TZClient.createDataObjectForCurrentUser(DataClassNames.Main.rawValue)
+            object[DataClassNames.MainPrimaryKey.rawValue] = zoneID
             
             // PARSE: send the object to the server on a background task
             object.saveEventually(nil)

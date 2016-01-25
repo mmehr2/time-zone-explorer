@@ -101,9 +101,9 @@ extension UsersTableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // do NOT allow deletion of current user!
-            let object = objectAtIndexPath(indexPath) as! PFUser
-            if object.objectId != PFUser.currentUser()?.objectId {
-                print("Deleting user \(object.username ?? "Unknown")")
+            let object = (objectAtIndexPath(indexPath) as? PFUser)
+            if let object = object where !TZClient.isObjectCurrentUser(object) {
+                print("Deleting user \(object.username)")
                 removeObjectAtIndexPath(indexPath) //PARSE
             }
         }
@@ -112,8 +112,8 @@ extension UsersTableViewController {
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         var result = true
         // do NOT allow editing of current user!
-        let object = objectAtIndexPath(indexPath) as! PFUser
-        if object.objectId == PFUser.currentUser()?.objectId {
+        let object = objectAtIndexPath(indexPath)
+        if TZClient.isObjectCurrentUser(object) {
             result = false
         }
         return result

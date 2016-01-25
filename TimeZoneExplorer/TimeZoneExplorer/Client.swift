@@ -31,6 +31,14 @@ class TZClient {
         }
         return "UserIsNotLoggedIn"
     }
+    
+    static func isObjectCurrentUser(object: AnyObject?) -> Bool {
+        var result = false
+        if let cuser = currentUser, object = object as? PFUser where object.objectId == cuser.objectId {
+            result = true
+        }
+        return result
+    }
 
     private static var currentUser: PFUser!
     
@@ -146,4 +154,16 @@ class TZClient {
             }
         }
     }
+}
+
+extension TZClient {
+    
+    static func createDataObjectForCurrentUser(className: String) -> PFObject {
+        let object = PFObject(className: className)
+        // make sure proper security ACL is provided for normal data class
+        let ACL = PFACL(user: currentUser)
+        object.ACL = ACL
+        return object
+    }
+
 }
