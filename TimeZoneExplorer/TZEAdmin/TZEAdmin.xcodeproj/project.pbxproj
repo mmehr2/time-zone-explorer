@@ -11,6 +11,8 @@
 		A682057A1C545C0E00C16908 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68205771C545C0E00C16908 /* Option.swift */; };
 		A682057B1C545C0E00C16908 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68205781C545C0E00C16908 /* CommandLine.swift */; };
 		A68205811C545D2300C16908 /* TZREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68205801C545D2300C16908 /* TZREST.swift */; };
+		A6C215D91C5492A700F31667 /* TZEAdmin in CopyFiles */ = {isa = PBXBuildFile; fileRef = A6CEA17B1C4AA75F00B26548 /* TZEAdmin */; };
+		A6C215DB1C54A4D700F31667 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C215DA1C54A4D700F31667 /* SwiftyJSON.swift */; };
 		A6CEA17F1C4AA75F00B26548 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA17E1C4AA75F00B26548 /* main.swift */; };
 		A6CEA18C1C4AD94500B26548 /* CreateNameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA18B1C4AD94500B26548 /* CreateNameData.swift */; };
 /* End PBXBuildFile section */
@@ -19,9 +21,10 @@
 		A6CEA1791C4AA75F00B26548 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
-			dstPath = Debug;
-			dstSubfolderSpec = 16;
+			dstPath = "~/Documents/Projects/Clients/project-michael-mehr/TimeZoneExplorer/TZEAdmin/TZEAdmin";
+			dstSubfolderSpec = 0;
 			files = (
+				A6C215D91C5492A700F31667 /* TZEAdmin in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,6 +35,14 @@
 		A68205771C545C0E00C16908 /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		A68205781C545C0E00C16908 /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		A68205801C545D2300C16908 /* TZREST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZREST.swift; sourceTree = "<group>"; };
+		A6C215DA1C54A4D700F31667 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		A6C215DC1C557A3300F31667 /* AddRoleRelations.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AddRoleRelations.sh; sourceTree = "<group>"; };
+		A6C215DD1C5583F200F31667 /* AddRoleUser.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AddRoleUser.sh; sourceTree = "<group>"; };
+		A6C215DE1C55884400F31667 /* RemoveRoleUser.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = RemoveRoleUser.sh; sourceTree = "<group>"; };
+		A6C215DF1C558ACF00F31667 /* QueryClass.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = QueryClass.sh; sourceTree = "<group>"; };
+		A6C215E01C558D9400F31667 /* Logout.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Logout.sh; sourceTree = "<group>"; };
+		A6C215E11C558DA400F31667 /* Login.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Login.sh; sourceTree = "<group>"; };
+		A6C215E21C55938D00F31667 /* QuerySession.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = QuerySession.sh; sourceTree = "<group>"; };
 		A6CEA17B1C4AA75F00B26548 /* TZEAdmin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TZEAdmin; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CEA17E1C4AA75F00B26548 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A6CEA18B1C4AD94500B26548 /* CreateNameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNameData.swift; sourceTree = "<group>"; };
@@ -74,6 +85,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A6C215E31C55A9FF00F31667 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				A6C215DC1C557A3300F31667 /* AddRoleRelations.sh */,
+				A6C215DD1C5583F200F31667 /* AddRoleUser.sh */,
+				A6C215DE1C55884400F31667 /* RemoveRoleUser.sh */,
+				A6C215DF1C558ACF00F31667 /* QueryClass.sh */,
+				A6C215E21C55938D00F31667 /* QuerySession.sh */,
+				A6C215E01C558D9400F31667 /* Logout.sh */,
+				A6C215E11C558DA400F31667 /* Login.sh */,
+			);
+			name = Scripts;
+			sourceTree = "<group>";
+		};
 		A6CEA1721C4AA75F00B26548 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +123,8 @@
 				A6CEA17E1C4AA75F00B26548 /* main.swift */,
 				A68205801C545D2300C16908 /* TZREST.swift */,
 				A6CEA18B1C4AD94500B26548 /* CreateNameData.swift */,
+				A6C215E31C55A9FF00F31667 /* Scripts */,
+				A6C215DA1C54A4D700F31667 /* SwiftyJSON.swift */,
 				A682057C1C545C1800C16908 /* CommandLine */,
 				A6CEA18D1C4AE90700B26548 /* TimeZones.csv */,
 			);
@@ -198,6 +225,7 @@
 				A68205791C545C0E00C16908 /* StringExtensions.swift in Sources */,
 				A6CEA18C1C4AD94500B26548 /* CreateNameData.swift in Sources */,
 				A68205811C545D2300C16908 /* TZREST.swift in Sources */,
+				A6C215DB1C54A4D700F31667 /* SwiftyJSON.swift in Sources */,
 				A6CEA17F1C4AA75F00B26548 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,6 +392,7 @@
 				A6EBC4F61C547F32006DF748 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
