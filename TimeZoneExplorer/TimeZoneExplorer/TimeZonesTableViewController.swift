@@ -189,21 +189,41 @@ extension TimeZonesTableViewController {
     
     // log the current user out
     private func logout() {
-        PFUser.logOut()
+        TZClient.logoutCurrentUser()
+    }
+    
+    // login has succeeded, do other related tasks
+    private func registerLoginForUser(user: PFUser) {
+        TZClient.registerLoginSuccess()
+    }
+    
+    // login has succeeded, do other related tasks
+    private func registerLoginFailure(error: NSError?) {
+        TZClient.registerLoginFailure(error)
     }
     
 }
 
 // MARK: Parse dependenciy (delegate for PFLogInViewController)
 extension TimeZonesTableViewController: PFLogInViewControllerDelegate {
+    // LOGIN SUCCESS
     func logInViewController( controller: PFLogInViewController, didLogInUser user: PFUser ) -> Void {
         self.dismissViewControllerAnimated(true, completion: nil)
+        registerLoginForUser(user)
     }
-    
+
+    // LOGIN CANCELED
     func logInViewControllerDidCancelLogIn( controller: PFLogInViewController ) -> Void {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    // LOGIN FAILURE
+    func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
+        // NOTE: do NOT dismiss the VC - it needs to stay up until login or signup is successful!
+        
+        // BUT - we can log the event anyway (log to cloud somehow too?)
+        registerLoginFailure(error)
+    }
 }
 
 // MARK: App TimeZone Add delegate
