@@ -13,8 +13,7 @@ It's mostly about formatting the various fields needed for list and detailed dis
 */
 
 import Foundation
-//import Parse
-//import ParseUI
+import UIKit
 
 extension TZTimeZone {
 
@@ -94,6 +93,10 @@ extension TZTimeZone {
             result = stdFormatInput.substringToIndex(foundRange.startIndex)
         }
         return result
+    }
+    
+    static func getCellColor( owned: Bool ) -> UIColor {
+        return owned ? SystemLook.lightColor : SystemLook.mediumColor
     }
     
 }

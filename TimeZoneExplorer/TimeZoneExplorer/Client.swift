@@ -156,14 +156,50 @@ class TZClient {
     }
 }
 
+// MARK: data creation services with proper ACL permissions
+
 extension TZClient {
     
     static func createDataObjectForCurrentUser(className: String) -> PFObject {
         let object = PFObject(className: className)
         // make sure proper security ACL is provided for normal data class
+        // regular data: step 1 - RW by current user
         let ACL = PFACL(user: currentUser)
+        // step 2 - RW by Managers role
+        ACL.setReadAccess(true, forRoleWithName: Role.Manager.name)
+        ACL.setWriteAccess(true, forRoleWithName: Role.Manager.name)
+        // save this permission into the data object
         object.ACL = ACL
         return object
     }
 
 }
+
+extension TZClient {
+    /// determine if provided object (as PFObject) has ACL that allows write explicity to current user
+    /// This is the only way currently to tell if the given object was created by the current user.
+    static func isObjectMine(object: AnyObject?) -> Bool {
+        var result = false
+        if let object = object as? PFObject,
+            access = object.ACL?.getWriteAccessForUser(currentUser) {
+                result = access
+        }
+        return result
+    }
+
+    /// Splits an array of PFObjects into two using the criterion of whether currentUser has Write access.
+    /// Returns a tuple of arrays; the first one contains those with W access, the second, those without.
+    static func getMyObjects(objects: [AnyObject]) -> (mine: [AnyObject], theirs: [AnyObject]) {
+        var myobjs = [AnyObject]()
+        var theirobjs = [AnyObject]()
+        for obj in objects {
+            if isObjectMine(obj) {
+                myobjs.append(obj)
+            } else {
+                theirobjs.append(obj)
+            }
+        }
+        return (myobjs, theirobjs)
+    }
+}
+

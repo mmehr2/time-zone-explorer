@@ -47,6 +47,7 @@ class TimeZonesTableViewController: PFQueryTableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        TZClient.securityDelegate = self
         presentLoginScreen() // only if needed
         reload()
     }
@@ -108,6 +109,10 @@ extension TimeZonesTableViewController {
         let formattedID = TZTimeZone.getStandardFormat(zoneID)
         cell?.textLabel?.text = formattedID
         
+        // set cell background color according to object status (owned by current user or not)
+        let owned = TZClient.isObjectMine(object)
+        cell?.backgroundColor = TZTimeZone.getCellColor(owned)
+        
         return cell
     }
 
@@ -136,10 +141,46 @@ extension TimeZonesTableViewController {
                     myZoneNames.insert(name)
                 }
             }
+            print("MyTimeZone List has \(myZoneNames.count) objects") //: \(myZoneNames)")
+            // count foreign objects if role isn't User level
+            if TZClient.role != .User {
+                let (ours, theirs) = TZClient.getMyObjects(objects)
+                print("Manager/Admin counts: ours = \(ours.count), theirs = \(theirs.count)")
+            }
         }
-        //print("List has \(myZoneNames.count) objects: \(myZoneNames)")
     }
     
+}
+
+// MARK: App TimeZone Add delegate
+extension TimeZonesTableViewController: TimeZoneAddDelegate {
+    
+    func isZoneIDInList(zoneID: String) -> Bool {
+        let result = myZoneNames.contains(zoneID)
+        print("Checking \(zoneID) in list: \(result)")
+        return result
+    }
+    
+    func saveZoneIDToList(zoneID: String) -> Bool {
+        if TZClient.loggedIn {
+            let username = TZClient.username
+            
+            // PARSE: create the new object
+            let object = TZClient.createDataObjectForCurrentUser(DataClassNames.Main.rawValue)
+            object[DataClassNames.MainPrimaryKey.rawValue] = zoneID
+            
+            // PARSE: send the object to the server on a background task
+            object.saveEventually(nil)
+            // and make sure we remember the name even before the objects come back from a reload
+            myZoneNames.insert(zoneID)
+            
+            print("TZAD: Save queued for \(zoneID) for user \(username)")
+            return true
+        } else {
+            print("TZAD: No user logged in, cannot save \(zoneID).")
+        }
+        return false
+    }
 }
 
 // MARK: TZClient dependencies
@@ -210,7 +251,7 @@ extension TimeZonesTableViewController {
     
 }
 
-// MARK: Parse dependenciy (delegate for PFLogInViewController)
+// MARK: Parse dependency (delegate for PFLogInViewController)
 extension TimeZonesTableViewController: PFLogInViewControllerDelegate {
     // LOGIN SUCCESS
     func logInViewController( controller: PFLogInViewController, didLogInUser user: PFUser ) -> Void {
@@ -232,37 +273,7 @@ extension TimeZonesTableViewController: PFLogInViewControllerDelegate {
     }
 }
 
-// MARK: App TimeZone Add delegate
-extension TimeZonesTableViewController: TimeZoneAddDelegate {
-    
-    func isZoneIDInList(zoneID: String) -> Bool {
-        let result = myZoneNames.contains(zoneID)
-        print("Checking \(zoneID) in list: \(result)")
-        return result
-    }
-    
-    func saveZoneIDToList(zoneID: String) -> Bool {
-        if TZClient.loggedIn {
-            let username = TZClient.username
-            
-            // PARSE: create the new object
-            let object = TZClient.createDataObjectForCurrentUser(DataClassNames.Main.rawValue)
-            object[DataClassNames.MainPrimaryKey.rawValue] = zoneID
-            
-            // PARSE: send the object to the server on a background task
-            object.saveEventually(nil)
-            // and make sure we remember the name even before the objects come back from a reload
-            myZoneNames.insert(zoneID)
-            
-            print("TZAD: Save queued for \(zoneID) for user \(username)")
-            return true
-        } else {
-            print("TZAD: No user logged in, cannot save \(zoneID).")
-        }
-        return false
-    }
-}
-
+// MARK: TZClient delegate for same (security changes)
 extension TimeZonesTableViewController: TZClientSecurityDelegate {
     func loginDidFinish(role: TZClient.Role) {
         // set changes in motion to the UI
