@@ -178,11 +178,119 @@ Screen shot TBD.
 * A toolbar button (Manager) is provided (transfer to __User List__ view for selected Manager).
 
 
+## SECURITY MODEL IN USE
+As I currently understand it, the Parse model allows each data object to have its access controlled by a PFACL object.
+This grants read or write permissions directly to Users by ID, or Roles by Name.
+
+I have implemented three Role objects: 
+
+* Users
+* Managers and 
+* Administrators.
+
+They are set up in a hierarchy: 
+
+Users --> Managers --> Administrators 
+
+(the arrows follow the 'roles' child relation in Parse).
+
+This allows whatever Users can do to be available to Managers as well, and what both can do available to Admins.
+
+The role objects will be set up using shell scripts (curl and the REST API), since there are only three needed, with fixed 'roles' relations between them.
+Their 'users' role (lists of users in each group) need to be managed dynamically.
+
+I setup the ACL on the three Role objects as follows:
+
+* Users role object - This has no public permissions (CLPs) but grants specific Read and Write to both Managers and Admins (the Admins is probably redundant).
+* Managers role object - This has no public permissions, but grants Read access only to the Managers (*), and Read and Write access to the Admins.
+* Administrators role object - This has no public permissions, but grants Read and Write access only to the Admins.
+
+(*) I believe this is needed so that Managers can consult the users list role relation even though they will not be changing them. If this is wrong, it can be removed.
+
+This setup has the interesting property that a user can query the roles object class, and depending on how many can be found, privileges can be granted:
+
+1. A current user who is an Admin will be able to see all 3 role objects (Adm, Mgr, Usr)
+2. A current user who is a Manager will only be able to see 2 role objects (Mgr, Usr)
+3. A current user who is at the User level will not be able to see any role objects.
+
+Thus by querying the _Role class and consulting the return count, we know what role the current user has been authenticated at.
+This has been tested using the shell scripts.
+
+For this to work properly to allow proper CRUD access to User objects for Managers, I believe the ACL's have to be modified.
+
+By default, Parse grants an ACL with Read/Write for the current (authenticated) user, and Public Read access for all users, to all data objects (including _User).
+
+My modified access lists will be:
+
+* For our basic data in MyTimeZones, this can be augmented with Read/Write access to Managers (and thus Admins). We do NOT grant access to other users via the Users role.
+* For the _User class, we need to add role access (R/W) to Managers as well (and thus Admins) as they are created.
+* ACLs for the _Role class have already been discussed.
+* The TimeZones class (for the public master list) must be protected from changes, but readable by all, and writeable by the Admins.
+
+[ This could be granted by adding the Admins role R/W to the objects as they are uploaded by the admin script (to >400 objects).
+But I believe it's easier to add a CLP for Write to the Admins. I have done this manually, and it needs to be tested. For deployment, I need to look at this a bit further (probably another script).]
+
+For marking individual entries and filtering if not owned by a Manager or Admin (for data access), we can consult the individual ACL's and check if there is Write access to the current Role.
+
+Objects won't even appear in the list unless they have Read access, and editing is prevented if Write access is denied. But still, for systemwide management, further functions would be useful.
+
 ## REST API
+
+The folllowing functions have been identified as being important for the REST API.
+They have been designed (and documented) as functions executed by the TZEAdmin tool.
+However, they can also be implemented by shell scripts, and this may prove to be more expedient for the time frame. The admin tool can be expanded later, especially for batch operations.
+
+SESSIONS (for all)
+
+* SIGNUP - Create a new user (takes -n Name -p Password, returns SessionID,UserID)
+* LOGIN - Login specified user (takes -n Name -p Password, returns SessionID,UserID)
+* LOGOUT - Logout current user session (takes -i SessionID)
+
+DATA (for all)
+
+* GETZONELIST - Get specified user's time zone list (takes -u UserID, returns List[ZoneName])
+* ADDTOZONELIST - Adds an entry to specified user's time zone list (takes -u UserID -n ZoneName)
+* DELETEFROMZONELIST - Deletes an entry from specified user's time zone list (takes -u UserID -n ZoneName)
+* GETMASTERTZLIST - Get the master list of time zone names (returns List[ZoneName])
+
+USERS (for MgrID,AdminID only)
+
+* GETUSERLIST - Get specified mgr's user list (takes -m MgrID, returns List[UserName])
+* GETUSERDATA - Get specified user's object data (takes -m MgrID, returns Obj[UserData])
+* CREATEUSER - Create a new user w/o login (takes -m MgrID -n Name -p Password [-e email][-P phone], returns UserID)
+* UPDATEUSER - Update user data (takes -m MgrID -u UserID [-n Name][-p Password][-e email][-P phone])
+* DELETEUSER - Delete user from system (takes -m MgrID -n Name)
+
+ROLES (for AdminID only)
+
+* GETROLELIST - Get security role list (takes -a AdminID, returns List[RoleName])
+* CREATEROLE - Create a new security role (takes -a AdminID -n RoleName, returns RoleID)
+* DELETEROLE - Delete role from system (takes -a AdminID -n RoleName)
+* GETUSERROLE - Get RoleName of specified user (takes -a AdminID [-u UserID | -U UserName], returns RoleName)
+* SETUSERROLE - Sets RoleName of specified user (takes -a AdminID [-u UserID | -U UserName] -n RoleName)
+* GETROLEUSERS - Get list of user names with given role (takes -a AdminID -n RoleName, returns List[UserName])
+
+MISC
+
+* GENMASTERTZLIST - Generate the master time zone list data in CSV format (takes -a AdminID)
+* SETMASTERTZLIST - Set the master list of time zone names (takes -a AdminID -D CSV-Data-File-Path)
+
 
 ## Requirements Testing
 
-### User Interface Testing
+I have implemented various shell scripts to supplement the command line tool. These turn out will be invaluable in getting things up and running in time.
 
-### REST API Testing
+  __NOTE:__ Currently the Parse.com data browser does NOT have the ability to change relations, just view them. This seems to have been an anticipated feature for over 3 years now.
+
+* ```Login.sh username password``` - Implements logging in a single user, returning a session token
+* ```Logout.sh``` - Logs out the current user session, specified in the $PARSE_SESSION_TOKEN environment variable (manually set for now).
+* ```AddRoleRelations.sh targetRoleID addedRoleID``` - Adds an object to the 'roles' relation on the Parse _Role object whose ID is given (cannot be done on Parse.com data browser currently).
+* ```AddRoleUser.sh targetRoleID addedUserID``` - Adds an object to the 'users' relation on the Parse _Role object whose ID is given (cannot be done on Parse.com data browser currently).
+* ```RemoveRoleUser.sh targetRoleID removedUserID``` - Removes an object from the 'users' relation on the Parse _Role object whose ID is given (cannot be done on Parse.com data browser currently).
+* ```QuerySession.sh ...``` - Allows the user to query the REST API for class object lists (all GET-accessible objects). This is the preferred, authenticated version, using $PARSE_SESSION_TOKEN.
+* ```QueryClass.sh``` (deprecated) - Allows the user to query the REST API for class object lists. This is the unauthenticated version and differs slightly from the above in usage.
+
+Further documentation can be found in the script source code.
+If this is an incomplete list, it at least shows how the rest should be done, as documented by Parse's own REST API.
+
 
