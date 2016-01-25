@@ -16,6 +16,9 @@ class TZREST {
     }
     
     static let errorDomain = "com.Parse.TimeZoneExplorer"
+
+    static let baseURL = "https://api.parse.com"
+    static let apiVersion = "1"
     
     enum Verb {
         case GET
@@ -50,4 +53,14 @@ class TZREST {
         loadDataTask.resume()
     }
 
+}
+
+class TZRESTCommand {
+    let verb: TZREST.Verb
+    let path: String
+    
+    init() {
+        verb = .GET
+        path = "/1/classes/"
+    }
 }
