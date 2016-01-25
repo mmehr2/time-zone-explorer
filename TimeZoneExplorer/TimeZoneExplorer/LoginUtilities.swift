@@ -25,15 +25,6 @@ extension TZClient {
         return logInController
     }
 
-    static var username: String {
-        if TZClient.loggedIn {
-            let user = PFUser.currentUser()!
-            let username = user.username ?? "Anonymous"
-            return username
-        }
-        return "UserIsNotLoggedIn"
-    }
-
 }
 
 // Keeping this code around in case...

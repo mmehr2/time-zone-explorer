@@ -14,8 +14,27 @@ Please see the approach taken in the README.md file.
 import Foundation
 import Parse
 
-class TZClient {
+protocol TZClientSecurityDelegate {
+    /// Notify the client that security info has been refreshed on login
+    func loginDidFinish( role: TZClient.Role );
+}
 
+class TZClient {
+    
+    // delegates
+    static var securityDelegate: TZClientSecurityDelegate?
+    
+    static var username: String {
+        if TZClient.loggedIn {
+            let username = currentUser.username ?? "Anonymous"
+            return username
+        }
+        return "UserIsNotLoggedIn"
+    }
+
+    private static var currentUser: PFUser!
+    
+    private static var currentRoles = [PFRole]()
     
     enum LoginState {
         case NoUser
@@ -26,6 +45,12 @@ class TZClient {
     static func getLoginState() -> LoginState {
         var result = LoginState.NoUser
         if let user = PFUser.currentUser() {
+            if currentUser == nil {
+                // time to kick off the static first-try init of the role objects
+                queryRoleObjects()
+                print("Called getLoginState() for the 1st time to ask for Roles.")
+            }
+            currentUser = user
             if user.authenticated {
                 result = .Authenticated;
             } else {
@@ -40,13 +65,17 @@ class TZClient {
     }
     
     static func logoutCurrentUser() {
+        // trigger the logout using cached Parse objects
         PFUser.logOut()
     }
 
-    static func registerLoginSuccess() {
+    static func registerLoginSuccess(user: PFUser) {
         // it's not necessary to pass the user in, it is available as the cached PFUser.currentUser() object.
+        // However it is better to use Dependency Injection here to allow for better testing.
+        currentUser = user
         // this is the point we need to kick off the security check mechanism (count _Role objects)
         // this will allow us to set the current Role (security level), which allows many other features
+        queryRoleObjects()
     }
     
     static func registerLoginFailure(error: NSError?) {
@@ -56,7 +85,8 @@ class TZClient {
             print("Login failure with no error object supplied.")
         }
     }
-    
+
+    // manually trigger the login (deprecated, use PFLogInViewController instead)
     static func loginUserEx(username: String, password: String, completion: ((TZClient?, String?) -> ())? = nil) {
         PFUser.logInWithUsernameInBackground(username, password: password) { user, error in
         }
@@ -87,8 +117,33 @@ class TZClient {
     }
     
     static var role: Role {
-        // TBD: figure out from current PFUser role
+        switch currentRoles.count {
+        case 2: return Role.Manager
+        case 3: return Role.Administrator
+        default: break
+        }
         return Role.User
     }
-    
+
+    private static func queryRoleObjects() {
+        // find out the _Role class objects we can find
+        let query = PFQuery(className:"_Role")
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) Roles.")
+                // Do something with the found objects
+                if let objects = objects as? [PFRole] {
+                    currentRoles = objects
+                    // notify the primary observer
+                    securityDelegate?.loginDidFinish(role)
+                }
+            } else {
+                // Log details of the failure
+                print("Role retrieval error: \(error!) \(error!.userInfo)")
+            }
+        }
+    }
 }

@@ -35,6 +35,7 @@ class TimeZonesTableViewController: PFQueryTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        TZClient.securityDelegate = self
         presentLoginScreen()
 
         // Do any additional setup after loading the view.
@@ -145,7 +146,7 @@ extension TimeZonesTableViewController {
     
     // hide the tab bar controller when in User role (does the toolbar leave too? I hope not...)
     override var hidesBottomBarWhenPushed: Bool {
-        get {return false} // uncomment when role detection is working { return TZClient.role == .User }
+        get { return TZClient.role == .User }
         set { super.hidesBottomBarWhenPushed = newValue }
     }
     
@@ -156,6 +157,10 @@ extension TimeZonesTableViewController {
         }
         if TZClient.loggedIn {
             self.navigationItem.prompt = TZClient.getFormattedUsernameTitle()
+            // this is a bit of a kludge to get the button bar refreshed with possible role changes
+            let temp = hidesBottomBarWhenPushed
+            hidesBottomBarWhenPushed = temp
+            self.navigationController?.popToRootViewControllerAnimated(false)
         }
     }
     
@@ -194,7 +199,7 @@ extension TimeZonesTableViewController {
     
     // login has succeeded, do other related tasks
     private func registerLoginForUser(user: PFUser) {
-        TZClient.registerLoginSuccess()
+        TZClient.registerLoginSuccess(user)
     }
     
     // login has succeeded, do other related tasks
@@ -256,6 +261,15 @@ extension TimeZonesTableViewController: TimeZoneAddDelegate {
             print("TZAD: No user logged in, cannot save \(zoneID).")
         }
         return false
+    }
+}
+
+extension TimeZonesTableViewController: TZClientSecurityDelegate {
+    func loginDidFinish(role: TZClient.Role) {
+        // set changes in motion to the UI
+        
+        presentLoginScreen() // only if needed
+        reload()
     }
 }
 
