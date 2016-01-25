@@ -13,14 +13,14 @@ import ParseUI
 // needs of project for its User class (encompasses all roles: User, Manager, Administrator)
 extension TZClient {
     
-    static func getLoginViewControllerFor(presentingVC: UIViewController) -> PFLogInViewController {
+    static func getLoginViewControllerFor(delegate: UIViewController) -> PFLogInViewController {
         let logInController = TZLogInViewController()
         logInController.fields = [ .UsernameAndPassword, .SignUpButton ]
-        logInController.delegate = (presentingVC as! PFLogInViewControllerDelegate)
+        logInController.delegate = (delegate as! PFLogInViewControllerDelegate)
         // configure the signup VC (no email for now, can edit later)
         let signUpVC = TZSignUpViewController()
         signUpVC.fields = [ .UsernameAndPassword, .SignUpButton, .DismissButton ]
-        signUpVC.delegate = (presentingVC as! PFSignUpViewControllerDelegate)
+        signUpVC.delegate = (delegate as! PFSignUpViewControllerDelegate)
         logInController.signUpController = signUpVC
         return logInController
     }

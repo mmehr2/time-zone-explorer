@@ -37,7 +37,7 @@ class TimeZonesTableViewController: PFQueryTableViewController {
         super.viewDidLoad()
         
         TZClient.securityDelegate = self
-        presentLoginScreen()
+//        presentLoginScreen()
 
         // Do any additional setup after loading the view.
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -48,8 +48,13 @@ class TimeZonesTableViewController: PFQueryTableViewController {
         super.viewWillAppear(animated)
         
         TZClient.securityDelegate = self
-        presentLoginScreen() // only if needed
+//        presentLoginScreen() // only if needed
         reload()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        presentLoginScreen() // only if needed
     }
 
     override func didReceiveMemoryWarning() {
@@ -195,14 +200,16 @@ extension TimeZonesTableViewController {
     private func presentLoginScreen() {
         if !TZClient.loggedIn {
             let vc = TZClient.getLoginViewControllerFor(self)
-            self.presentViewController(vc, animated: true, completion: nil)
+            self.tabBarController!.presentViewController(vc, animated: true, completion: nil)
         }
         if TZClient.loggedIn {
             self.navigationItem.prompt = TZClient.getFormattedUsernameTitle()
             // this is a bit of a kludge to get the button bar refreshed with possible role changes
             let temp = hidesBottomBarWhenPushed
             hidesBottomBarWhenPushed = temp
-            self.navigationController?.popToRootViewControllerAnimated(false)
+            //self.navigationController?.popToRootViewControllerAnimated(false)
+        } else {
+            print("No Login made.")
         }
     }
     
@@ -277,7 +284,9 @@ extension TimeZonesTableViewController: PFLogInViewControllerDelegate {
     // LOGIN FAILURE
     func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
         // NOTE: do NOT dismiss the VC - it needs to stay up until login or signup is successful!
-        
+        if let error = error {
+            self.showErrorView(error)
+        }
         // BUT - we can log the event anyway (log to cloud somehow too?)
         registerLoginFailure(error)
     }
@@ -303,6 +312,9 @@ extension TimeZonesTableViewController: PFSignUpViewControllerDelegate {
     // SIGNUP FAILURE
     func signUpViewController(signUpController: PFSignUpViewController, didFailToSignUpWithError error: NSError?) {
         // NOTE: do NOT auto-dismiss the VC - it needs to stay up until login or signup is successful!
+        if let error = error {
+            self.showErrorView(error)
+        }
         
         // BUT - we can log the event anyway (log to cloud somehow too?)
         registerSignupFailure(error)
