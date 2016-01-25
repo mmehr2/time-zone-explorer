@@ -234,6 +234,13 @@ For marking individual entries and filtering if not owned by a Manager or Admin 
 
 Objects won't even appear in the list unless they have Read access, and editing is prevented if Write access is denied. But still, for systemwide management, further functions would be useful.
 
+### UPDATED NOTE ON SECURITY:
+
+I have discovered entries on the Parse blog that indicate that Parse has specifically disallowed any manipulation of User object permissions (such as making them editable by Managers) in the
+app API interface. They say that the Master Key allows permissions (via the Browser or REST API). So my plans for an app User Management screen probably need to be adjusted or scrapped.
+
+[Here](http://blog.parse.com/learn/engineering/parse-security-iii-are-you-on-the-list/) is the link with relevant description of the problem. 
+
 ## REST API
 
 The folllowing functions have been identified as being important for the REST API.

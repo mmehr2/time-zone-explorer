@@ -244,9 +244,19 @@ extension TimeZonesTableViewController {
         TZClient.registerLoginSuccess(user)
     }
     
-    // login has succeeded, do other related tasks
+    // login has failed, log the event
     private func registerLoginFailure(error: NSError?) {
         TZClient.registerLoginFailure(error)
+    }
+    
+    // signup has succeeded, do other related tasks
+    private func registerSignupForUser(user: PFUser) {
+        TZClient.registerLoginSuccess(user, withSignUp: true)
+    }
+    
+    // signup has failed, log the event
+    private func registerSignupFailure(error: NSError?) {
+        TZClient.registerLoginFailure(error, withSignUp: true)
     }
     
 }
@@ -270,6 +280,32 @@ extension TimeZonesTableViewController: PFLogInViewControllerDelegate {
         
         // BUT - we can log the event anyway (log to cloud somehow too?)
         registerLoginFailure(error)
+    }
+}
+
+// MARK: Parse dependency (delegate for PFSignUpViewController)
+// NOTE: The default operation of this is to come up over TOP of the Login controller when user hits a button ("Sign Up").
+// So dismissing it is up to the user, and should be allowed. As to whether to allow only one attempt to sign up? Well might as well allow more ...
+// Rather than make them go through another login, let's just auto-log-in by dismissing both controllers at once.. can we?
+// Barring that, fill in the Username and Password fields of the original controller for them?
+extension TimeZonesTableViewController: PFSignUpViewControllerDelegate {
+    // SIGNUP SUCCESS
+    func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) -> Void {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        registerSignupForUser(user)
+    }
+    
+    // SIGNUP CANCELED
+    func signUpViewControllerDidCancelSignUp(signUpController: PFSignUpViewController) -> Void {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // SIGNUP FAILURE
+    func signUpViewController(signUpController: PFSignUpViewController, didFailToSignUpWithError error: NSError?) {
+        // NOTE: do NOT auto-dismiss the VC - it needs to stay up until login or signup is successful!
+        
+        // BUT - we can log the event anyway (log to cloud somehow too?)
+        registerSignupFailure(error)
     }
 }
 

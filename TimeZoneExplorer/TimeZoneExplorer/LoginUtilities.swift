@@ -15,13 +15,13 @@ extension TZClient {
     
     static func getLoginViewControllerFor(presentingVC: UIViewController) -> PFLogInViewController {
         let logInController = TZLogInViewController()
-        logInController.signUpController = TZSignUpViewController()
-        if TZClient.loggedIn {
-            logInController.fields = [ .UsernameAndPassword, .SignUpButton, .DismissButton ]
-        } else {
-            logInController.fields = [ .UsernameAndPassword, .SignUpButton ]
-        }
+        logInController.fields = [ .UsernameAndPassword, .SignUpButton ]
         logInController.delegate = (presentingVC as! PFLogInViewControllerDelegate)
+        // configure the signup VC (no email for now, can edit later)
+        let signUpVC = TZSignUpViewController()
+        signUpVC.fields = [ .UsernameAndPassword, .SignUpButton, .DismissButton ]
+        signUpVC.delegate = (presentingVC as! PFSignUpViewControllerDelegate)
+        logInController.signUpController = signUpVC
         return logInController
     }
 

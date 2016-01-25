@@ -64,6 +64,11 @@ class TZClient {
             } else {
                 result = .NotAuthenticated
             }
+            if user.ACL == nil {
+                print("Deferred security check - no permissions object. Will it go away?")
+            } else {
+                print("Security check went away.")
+            }
         }
         return result
     }
@@ -77,20 +82,26 @@ class TZClient {
         PFUser.logOut()
     }
 
-    static func registerLoginSuccess(user: PFUser) {
+    static func registerLoginSuccess(user: PFUser, withSignUp signupFlag: Bool = false) {
         // it's not necessary to pass the user in, it is available as the cached PFUser.currentUser() object.
         // However it is better to use Dependency Injection here to allow for better testing.
         currentUser = user
         // this is the point we need to kick off the security check mechanism (count _Role objects)
         // this will allow us to set the current Role (security level), which allows many other features
-        queryRoleObjects()
+        queryRoleObjects(signupFlag)
+        
+        if signupFlag {
+            // we also need to augment the security ACL on the provided user object and save it again to the cloud
+            augmentUserSecurity()
+        }
     }
     
-    static func registerLoginFailure(error: NSError?) {
+    static func registerLoginFailure(error: NSError?, withSignUp signupFlag: Bool = false) {
+        let type = signupFlag ? "Signup" : "Login"
         if let error=error {
-            print("Login failure with error \(error)")
+            print("\(type) failure with error \(error)")
         } else {
-            print("Login failure with no error object supplied.")
+            print("\(type) failure with no error object supplied.")
         }
     }
 
@@ -133,7 +144,7 @@ class TZClient {
         return Role.User
     }
 
-    private static func queryRoleObjects() {
+    private static func queryRoleObjects(signup: Bool = false) {
         // find out the _Role class objects we can find
         let query = PFQuery(className:"_Role")
         query.findObjectsInBackgroundWithBlock {
@@ -145,9 +156,15 @@ class TZClient {
                 // Do something with the found objects
                 if let objects = objects as? [PFRole] {
                     currentRoles = objects
-                    // notify the primary observer
-                    securityDelegate?.loginDidFinish(role)
                 }
+                // NOTE: all new users are Users after signup, so there will be no objects
+                // However, the search has completed without error (I hope), so run the permission change and notification.
+                // user role management for new user
+                if signup {
+                    addCurrentUserToRole(role)
+                }
+                // notify the primary observer
+                securityDelegate?.loginDidFinish(role)
             } else {
                 // Log details of the failure
                 print("Role retrieval error: \(error!) \(error!.userInfo)")
@@ -163,14 +180,53 @@ extension TZClient {
     static func createDataObjectForCurrentUser(className: String) -> PFObject {
         let object = PFObject(className: className)
         // make sure proper security ACL is provided for normal data class
-        // regular data: step 1 - RW by current user
-        let ACL = PFACL(user: currentUser)
-        // step 2 - RW by Managers role
-        ACL.setReadAccess(true, forRoleWithName: Role.Manager.name)
-        ACL.setWriteAccess(true, forRoleWithName: Role.Manager.name)
-        // save this permission into the data object
-        object.ACL = ACL
+        // NOTE: this also works for User objects
+        addManagerPermissions(object)
         return object
+    }
+    
+    static func addManagerPermissions(object: PFObject) {
+        // if object has no ACL, make one like Parse defaults
+        if object.ACL == nil {
+            // regular data: step 1 - RW by current user
+            // save this permission into the data object
+            object.ACL = PFACL(user: currentUser)
+        }
+        // step 2 - RW by Managers role
+        // takes the ACL from object if it exists, and adds manager RW access to it
+        if let ACL = object.ACL {
+            ACL.setReadAccess(true, forRoleWithName: Role.Manager.name)
+            ACL.setWriteAccess(true, forRoleWithName: Role.Manager.name)
+        }
+    }
+    
+    static func augmentUserSecurity() {
+        // set manager permissions on currentUser's ACL
+        addManagerPermissions(currentUser)
+        // save the object on a background thread eventually
+        currentUser.saveEventually()
+    }
+    
+    static func addCurrentUserToRole(role: Role) {
+        // NOTE: THIS DOESN'T WORK FOR THE USER ROLE, ONLY MGR OR ADMIN
+        // Unfortunately on signup ALL users are in the User role, and only a Manager or Admin can do their Role management.
+        // We could punt and just say that the Users role isn't used anyway, so no need to fill it out.
+        // And the managers may opt to add the user role using the script in the meantime, anyway.
+        // This will probably prove useful later when we add UI to change roles by Admins in the app.
+        if let roleObj = getObjectForRole(role) {
+            // add the current logged-in user to this roleObj's users relation
+            roleObj.users.addObject(currentUser)
+        }
+    }
+    
+    static func getObjectForRole(role: Role) -> PFRole? {
+        var result: PFRole?
+        // user can't access the Users PFRole object to add his name.. hmmmmm!
+        if role != .User {
+            // else if we are a Manager, there are 2 to choose from, and 3 for an Admin
+            result = currentRoles.filter{ $0.name == role.name }.first
+        }
+        return result
     }
 
 }

@@ -65,6 +65,7 @@ class UsersTableViewController: PFQueryTableViewController {
             // just need to specify ourselves as the UserDisplayDelegate to supply data details
             if let dvc = segue.destinationViewController as? UserDetailsViewController {
                 dvc.currentObject = nil
+                dvc.editable = true
             }
         }
         if segue.identifier == SegueNames.Display.rawValue {
@@ -73,6 +74,11 @@ class UsersTableViewController: PFQueryTableViewController {
                 let indexPath = tableView.indexPathForCell(cell),
                 let object = objects?[indexPath.row] as? PFUser {
                     dvc.currentObject = object
+                    // set the editable flag according to user role here:
+                    // ADMIN -- can always edit details of all users
+                    // MANAGER - can edit details of everyone as well (Admins can't be bothered)
+                    // USER - can't even see the screen (currently)
+                    dvc.editable = (TZClient.role != .User)
             }
         }
     }
