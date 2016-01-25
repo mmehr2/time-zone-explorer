@@ -44,6 +44,7 @@
 		A6C215E11C558DA400F31667 /* Login.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Login.sh; sourceTree = "<group>"; };
 		A6C215E21C55938D00F31667 /* QuerySession.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = QuerySession.sh; sourceTree = "<group>"; };
 		A6C215E61C56127A00F31667 /* DeleteUser.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = DeleteUser.sh; sourceTree = "<group>"; };
+		A6C215E71C564D7400F31667 /* QueryMasterSession.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = QueryMasterSession.sh; sourceTree = "<group>"; };
 		A6CEA17B1C4AA75F00B26548 /* TZEAdmin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TZEAdmin; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CEA17E1C4AA75F00B26548 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A6CEA18B1C4AD94500B26548 /* CreateNameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNameData.swift; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 				A6C215DE1C55884400F31667 /* RemoveRoleUser.sh */,
 				A6C215DF1C558ACF00F31667 /* QueryClass.sh */,
 				A6C215E21C55938D00F31667 /* QuerySession.sh */,
+				A6C215E71C564D7400F31667 /* QueryMasterSession.sh */,
 				A6C215E01C558D9400F31667 /* Logout.sh */,
 				A6C215E61C56127A00F31667 /* DeleteUser.sh */,
 				A6C215E11C558DA400F31667 /* Login.sh */,
