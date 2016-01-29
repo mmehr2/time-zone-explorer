@@ -19,44 +19,11 @@ class TZREST {
 
     static let baseURL = "https://api.parse.com"
     static let apiVersion = "1"
-    
-    enum Verb {
-        case GET
-        case POST
-        case PUT
-        case DELETE
-    }
-
-    enum RESTHeader {
-        case AppID
-        case ApiKey
-        case ContentType
-    }
-    
-    class func loadDataFromURL(urlr: NSURLRequest, completion:(data: NSData?, error: NSError?) -> Void) {
-        let session = NSURLSession.sharedSession()
-        
-        // Use NSURLSession to get data from an NSURL
-        let loadDataTask = session.dataTaskWithRequest(urlr, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
-            if let responseError = error {
-                completion(data: nil, error: responseError)
-            } else if let httpResponse = response as? NSHTTPURLResponse {
-                if !(200...299).contains(httpResponse.statusCode) {
-                    let statusError = NSError(domain: errorDomain, code:httpResponse.statusCode, userInfo:[NSLocalizedDescriptionKey : "HTTP status code has unexpected value."])
-                    completion(data: nil, error: statusError)
-                } else {
-                    completion(data: data, error: nil)
-                }
-            }
-        })
-        
-        loadDataTask.resume()
-    }
-
+ 
 }
 
 class TZRESTCommand {
-    let verb: TZREST.Verb
+    let verb: PARSEAPI.Verb
     let path: String
     
     init() {

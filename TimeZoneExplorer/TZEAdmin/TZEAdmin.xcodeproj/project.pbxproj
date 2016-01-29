@@ -11,8 +11,14 @@
 		A682057A1C545C0E00C16908 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68205771C545C0E00C16908 /* Option.swift */; };
 		A682057B1C545C0E00C16908 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68205781C545C0E00C16908 /* CommandLine.swift */; };
 		A68205811C545D2300C16908 /* TZREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68205801C545D2300C16908 /* TZREST.swift */; };
+		A6B34C911C583555001296F3 /* DataConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B34C901C583555001296F3 /* DataConnection.swift */; };
+		A6B34C9A1C583CCA001296F3 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B34C931C583CCA001296F3 /* Decoder.swift */; };
+		A6B34C9B1C583CCA001296F3 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B34C941C583CCA001296F3 /* Dictionary.swift */; };
+		A6B34C9C1C583CCA001296F3 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B34C951C583CCA001296F3 /* Encoder.swift */; };
+		A6B34C9D1C583CCA001296F3 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B34C971C583CCA001296F3 /* Gloss.swift */; };
+		A6B34C9E1C583CCA001296F3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B34C991C583CCA001296F3 /* Operators.swift */; };
 		A6C215D91C5492A700F31667 /* TZEAdmin in CopyFiles */ = {isa = PBXBuildFile; fileRef = A6CEA17B1C4AA75F00B26548 /* TZEAdmin */; };
-		A6C215DB1C54A4D700F31667 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C215DA1C54A4D700F31667 /* SwiftyJSON.swift */; };
+		A6C215EF1C582F3500F31667 /* RESTforPARSE.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C215EE1C582F3500F31667 /* RESTforPARSE.swift */; };
 		A6CEA17F1C4AA75F00B26548 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA17E1C4AA75F00B26548 /* main.swift */; };
 		A6CEA18C1C4AD94500B26548 /* CreateNameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA18B1C4AD94500B26548 /* CreateNameData.swift */; };
 /* End PBXBuildFile section */
@@ -35,7 +41,14 @@
 		A68205771C545C0E00C16908 /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		A68205781C545C0E00C16908 /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		A68205801C545D2300C16908 /* TZREST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZREST.swift; sourceTree = "<group>"; };
-		A6C215DA1C54A4D700F31667 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		A6B34C901C583555001296F3 /* DataConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataConnection.swift; sourceTree = "<group>"; };
+		A6B34C931C583CCA001296F3 /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		A6B34C941C583CCA001296F3 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		A6B34C951C583CCA001296F3 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
+		A6B34C961C583CCA001296F3 /* Gloss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gloss.h; sourceTree = "<group>"; };
+		A6B34C971C583CCA001296F3 /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gloss.swift; sourceTree = "<group>"; };
+		A6B34C981C583CCA001296F3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6B34C991C583CCA001296F3 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		A6C215DC1C557A3300F31667 /* AddRoleRelations.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AddRoleRelations.sh; sourceTree = "<group>"; };
 		A6C215DD1C5583F200F31667 /* AddRoleUser.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AddRoleUser.sh; sourceTree = "<group>"; };
 		A6C215DE1C55884400F31667 /* RemoveRoleUser.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = RemoveRoleUser.sh; sourceTree = "<group>"; };
@@ -45,6 +58,7 @@
 		A6C215E21C55938D00F31667 /* QuerySession.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = QuerySession.sh; sourceTree = "<group>"; };
 		A6C215E61C56127A00F31667 /* DeleteUser.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = DeleteUser.sh; sourceTree = "<group>"; };
 		A6C215E71C564D7400F31667 /* QueryMasterSession.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = QueryMasterSession.sh; sourceTree = "<group>"; };
+		A6C215EE1C582F3500F31667 /* RESTforPARSE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTforPARSE.swift; sourceTree = "<group>"; };
 		A6CEA17B1C4AA75F00B26548 /* TZEAdmin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TZEAdmin; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CEA17E1C4AA75F00B26548 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A6CEA18B1C4AD94500B26548 /* CreateNameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNameData.swift; sourceTree = "<group>"; };
@@ -87,6 +101,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A6B34C921C583CCA001296F3 /* Gloss */ = {
+			isa = PBXGroup;
+			children = (
+				A6B34C931C583CCA001296F3 /* Decoder.swift */,
+				A6B34C941C583CCA001296F3 /* Dictionary.swift */,
+				A6B34C951C583CCA001296F3 /* Encoder.swift */,
+				A6B34C961C583CCA001296F3 /* Gloss.h */,
+				A6B34C971C583CCA001296F3 /* Gloss.swift */,
+				A6B34C981C583CCA001296F3 /* Info.plist */,
+				A6B34C991C583CCA001296F3 /* Operators.swift */,
+			);
+			path = Gloss;
+			sourceTree = "<group>";
+		};
 		A6C215E31C55A9FF00F31667 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,9 +154,11 @@
 			children = (
 				A6CEA17E1C4AA75F00B26548 /* main.swift */,
 				A68205801C545D2300C16908 /* TZREST.swift */,
+				A6C215EE1C582F3500F31667 /* RESTforPARSE.swift */,
+				A6B34C901C583555001296F3 /* DataConnection.swift */,
+				A6B34C921C583CCA001296F3 /* Gloss */,
 				A6CEA18B1C4AD94500B26548 /* CreateNameData.swift */,
 				A6C215E31C55A9FF00F31667 /* Scripts */,
-				A6C215DA1C54A4D700F31667 /* SwiftyJSON.swift */,
 				A682057C1C545C1800C16908 /* CommandLine */,
 				A6CEA18D1C4AE90700B26548 /* TimeZones.csv */,
 			);
@@ -225,11 +255,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A682057B1C545C0E00C16908 /* CommandLine.swift in Sources */,
+				A6B34C9B1C583CCA001296F3 /* Dictionary.swift in Sources */,
+				A6B34C911C583555001296F3 /* DataConnection.swift in Sources */,
 				A682057A1C545C0E00C16908 /* Option.swift in Sources */,
 				A68205791C545C0E00C16908 /* StringExtensions.swift in Sources */,
+				A6B34C9A1C583CCA001296F3 /* Decoder.swift in Sources */,
+				A6B34C9D1C583CCA001296F3 /* Gloss.swift in Sources */,
+				A6C215EF1C582F3500F31667 /* RESTforPARSE.swift in Sources */,
 				A6CEA18C1C4AD94500B26548 /* CreateNameData.swift in Sources */,
+				A6B34C9E1C583CCA001296F3 /* Operators.swift in Sources */,
 				A68205811C545D2300C16908 /* TZREST.swift in Sources */,
-				A6C215DB1C54A4D700F31667 /* SwiftyJSON.swift in Sources */,
+				A6B34C9C1C583CCA001296F3 /* Encoder.swift in Sources */,
 				A6CEA17F1C4AA75F00B26548 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,6 +6,8 @@
 //  Copyright © 2016 Michael L. Mehr. All rights reserved.
 //
 
+// NOTE: This looks like it's still as useful as ever: rm -rf ~/Library/Developer/Xcode/DerivedData/ModuleCache
+
 import Foundation
 
 let cli = CommandLine()

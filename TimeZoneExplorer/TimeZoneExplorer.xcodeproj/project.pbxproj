@@ -46,6 +46,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A6C215EC1C582EF400F31667 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6CEA1851C4AA75F00B26548 /* TZEAdmin.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A6EBC4EF1C547F32006DF748;
+			remoteInfo = SwiftyJSONTests;
+		};
 		A6CEA1091C4851AA00B26548 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A6CEA0EC1C4851AA00B26548 /* Project object */;
@@ -259,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				A6CEA18A1C4AA76000B26548 /* TZEAdmin */,
+				A6C215ED1C582EF400F31667 /* SwiftyJSONTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -390,6 +398,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		A6C215ED1C582EF400F31667 /* SwiftyJSONTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftyJSONTests.xctest;
+			remoteRef = A6C215EC1C582EF400F31667 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		A6CEA18A1C4AA76000B26548 /* TZEAdmin */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
