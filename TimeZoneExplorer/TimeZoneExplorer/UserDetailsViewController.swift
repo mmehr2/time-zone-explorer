@@ -25,6 +25,8 @@ class UserDetailsViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var signUpButton: UIBarButtonItem!
     
+    @IBOutlet weak var roleMgrLabel: UILabel!
+    @IBOutlet weak var roleMgrControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -19,6 +19,33 @@ protocol TZClientSecurityDelegate {
     func loginDidFinish( role: TZClient.Role );
 }
 
+struct TZClientData {
+    
+    // instance data (encapsulating user info
+    let username: String?
+    let password: String?
+    let email: String?
+    let phone: String?
+    let objectID: String? // link to PARSE
+    
+    init(username _username: String = "", password _password: String = "", email _email: String = "", phone _phone: String = "") {
+        username = _username
+        password = _password
+        email = _email
+        phone = _phone
+        objectID = nil
+    }
+    
+    init(object: PFUser) {
+        username = object.username
+        password = object.password
+        email = object.email
+        phone = object["phone"] as? String // added
+        objectID = object.objectId
+    }
+    
+}
+
 class TZClient {
     
     // delegates
@@ -64,11 +91,11 @@ class TZClient {
             } else {
                 result = .NotAuthenticated
             }
-            if user.ACL == nil {
-                print("Deferred security check - no permissions object. Will it go away?")
-            } else {
-                print("Security check went away.")
-            }
+//            if user.ACL == nil {
+//                print("Deferred security check - no permissions object. Will it go away?")
+//            } else {
+//                print("Security check went away.")
+//            }
         }
         return result
     }

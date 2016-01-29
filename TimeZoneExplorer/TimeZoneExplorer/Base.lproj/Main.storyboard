@@ -118,6 +118,20 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Role Management" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFH-jY-RGU">
+                                <rect key="frame" x="20" y="257" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hSZ-va-r7e">
+                                <rect key="frame" x="20" y="286" width="560" height="29"/>
+                                <segments>
+                                    <segment title="Users"/>
+                                    <segment title="Managers"/>
+                                    <segment title="Administrators"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -133,15 +147,29 @@
                             <constraint firstItem="Dk0-JU-egp" firstAttribute="trailing" secondItem="MGM-MZ-xUb" secondAttribute="trailingMargin" id="NT1-tk-BZX"/>
                             <constraint firstItem="cvn-7T-FKU" firstAttribute="baseline" secondItem="Z29-Ue-iKP" secondAttribute="baseline" id="T3w-OJ-mJU"/>
                             <constraint firstItem="XEF-EM-FyR" firstAttribute="trailing" secondItem="MGM-MZ-xUb" secondAttribute="trailingMargin" id="UIk-lJ-5hQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zFH-jY-RGU" secondAttribute="trailing" id="YXd-Hd-Nm0"/>
                             <constraint firstItem="kA0-FG-KlX" firstAttribute="baseline" secondItem="Dk0-JU-egp" secondAttribute="baseline" id="ZBs-BA-aol"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zFH-jY-RGU" secondAttribute="trailing" constant="186" id="d5s-JL-P0L"/>
+                            <constraint firstItem="hSZ-va-r7e" firstAttribute="top" secondItem="zFH-jY-RGU" secondAttribute="bottom" constant="8" symbolic="YES" id="dSc-Nh-rEj"/>
                             <constraint firstAttribute="leadingMargin" secondItem="zFj-aH-sK4" secondAttribute="leading" id="fa2-XH-HpQ"/>
+                            <constraint firstItem="hSZ-va-r7e" firstAttribute="centerY" secondItem="MGM-MZ-xUb" secondAttribute="centerY" id="jnZ-VL-Vp5"/>
                             <constraint firstItem="kA0-FG-KlX" firstAttribute="leading" secondItem="MGM-MZ-xUb" secondAttribute="leadingMargin" id="jsz-vf-daH"/>
                             <constraint firstItem="gmy-4Q-9GS" firstAttribute="trailing" secondItem="MGM-MZ-xUb" secondAttribute="trailingMargin" id="kxh-s7-qRT"/>
+                            <constraint firstItem="zFH-jY-RGU" firstAttribute="leading" secondItem="MGM-MZ-xUb" secondAttribute="leadingMargin" id="nbX-Er-blH"/>
                             <constraint firstItem="Dk0-JU-egp" firstAttribute="leading" secondItem="kA0-FG-KlX" secondAttribute="trailing" constant="8" symbolic="YES" id="nnq-fT-X1W"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hSZ-va-r7e" secondAttribute="trailing" id="pEg-UI-j6p"/>
                             <constraint firstItem="XEF-EM-FyR" firstAttribute="top" secondItem="gmy-4Q-9GS" secondAttribute="bottom" constant="8" symbolic="YES" id="pyQ-J1-gQA"/>
                             <constraint firstItem="Dk0-JU-egp" firstAttribute="top" secondItem="qhr-j4-fMr" secondAttribute="bottom" constant="8" symbolic="YES" id="syI-PG-b8F"/>
+                            <constraint firstItem="zFH-jY-RGU" firstAttribute="trailing" secondItem="Z29-Ue-iKP" secondAttribute="trailing" id="u7z-6j-1uJ"/>
                             <constraint firstItem="Z29-Ue-iKP" firstAttribute="top" secondItem="XEF-EM-FyR" secondAttribute="bottom" constant="8" symbolic="YES" id="x1x-eQ-VtI"/>
+                            <constraint firstItem="hSZ-va-r7e" firstAttribute="leading" secondItem="MGM-MZ-xUb" secondAttribute="leadingMargin" id="y3e-i3-rzb"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="d5s-JL-P0L"/>
+                                <exclude reference="u7z-6j-1uJ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems>
                         <barButtonItem title="Sign Up" id="ptq-nk-jDW">
@@ -162,6 +190,8 @@
                         <outlet property="emailField" destination="XEF-EM-FyR" id="RZJ-Py-Yge"/>
                         <outlet property="passwordField" destination="gmy-4Q-9GS" id="CWZ-dM-d15"/>
                         <outlet property="phoneField" destination="Z29-Ue-iKP" id="Jv0-QL-nXk"/>
+                        <outlet property="roleMgrControl" destination="hSZ-va-r7e" id="DiO-1k-Lws"/>
+                        <outlet property="roleMgrLabel" destination="zFH-jY-RGU" id="3xa-Xc-jZM"/>
                         <outlet property="saveButton" destination="Vhd-aB-86a" id="rcq-gz-WFO"/>
                         <outlet property="signUpButton" destination="ptq-nk-jDW" id="hZa-nV-DLx"/>
                         <outlet property="usernameField" destination="Dk0-JU-egp" id="1Ci-Mv-Cbw"/>

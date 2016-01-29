@@ -48,9 +48,9 @@ class TimeZoneDetailsViewController: UIViewController {
         // NOTE: moved to viewWillAppear()
         
         // text color adjustments
-        self.view.backgroundColor = SystemLook.mediumColor
+        self.view.backgroundColor = SystemLook.darkColor
         
-        let labelColor = SystemLook.darkColor
+        let labelColor = SystemLook.mediumColor
         areaNameLabel.textColor = labelColor
         regionNameLabel.textColor = labelColor
         cityNameLabel.textColor = labelColor
