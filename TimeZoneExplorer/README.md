@@ -2,7 +2,7 @@
 
 **Author**: Michael L. Mehr, AzuResults, LLC
 
-**For**: Toptal review
+**For**: Training project
 
 **Project Start Date**: January 11, 2016
 
