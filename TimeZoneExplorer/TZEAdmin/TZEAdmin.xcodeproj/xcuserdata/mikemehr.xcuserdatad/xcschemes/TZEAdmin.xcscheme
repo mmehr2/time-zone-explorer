@@ -61,6 +61,12 @@
             ReferencedContainer = "container:TZEAdmin.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-c SIGNUP -n &quot;Name is Mike&quot; -p X"
+            isEnabled = "NO">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
