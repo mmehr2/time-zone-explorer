@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>TZEAdminTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>A6B34CA21C5CB31E001296F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A6CEA17A1C4AA75F00B26548</key>
 		<dict>
 			<key>primary</key>

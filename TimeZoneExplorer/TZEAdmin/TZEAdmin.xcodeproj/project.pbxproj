@@ -17,6 +17,15 @@
 		A6B34C9C1C583CCA001296F3 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B34C951C583CCA001296F3 /* Encoder.swift */; };
 		A6B34C9D1C583CCA001296F3 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B34C971C583CCA001296F3 /* Gloss.swift */; };
 		A6B34C9E1C583CCA001296F3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B34C991C583CCA001296F3 /* Operators.swift */; };
+		A6B34CA61C5CB31E001296F3 /* TZEAdminTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B34CA51C5CB31E001296F3 /* TZEAdminTests.swift */; };
+		A6B34CAB1C5CBAB8001296F3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA17E1C4AA75F00B26548 /* main.swift */; };
+		A6B34CAC1C5CBAB8001296F3 /* TZREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68205801C545D2300C16908 /* TZREST.swift */; };
+		A6B34CAD1C5CBAB8001296F3 /* RESTforPARSE.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C215EE1C582F3500F31667 /* RESTforPARSE.swift */; };
+		A6B34CAE1C5CBAB8001296F3 /* DataConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B34C901C583555001296F3 /* DataConnection.swift */; };
+		A6B34CAF1C5CBAD1001296F3 /* CreateNameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA18B1C4AD94500B26548 /* CreateNameData.swift */; };
+		A6B34CB01C5CBAEC001296F3 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68205761C545C0E00C16908 /* StringExtensions.swift */; };
+		A6B34CB11C5CBAEC001296F3 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68205771C545C0E00C16908 /* Option.swift */; };
+		A6B34CB21C5CBAEC001296F3 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68205781C545C0E00C16908 /* CommandLine.swift */; };
 		A6C215D91C5492A700F31667 /* TZEAdmin in CopyFiles */ = {isa = PBXBuildFile; fileRef = A6CEA17B1C4AA75F00B26548 /* TZEAdmin */; };
 		A6C215EF1C582F3500F31667 /* RESTforPARSE.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C215EE1C582F3500F31667 /* RESTforPARSE.swift */; };
 		A6CEA17F1C4AA75F00B26548 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEA17E1C4AA75F00B26548 /* main.swift */; };
@@ -49,6 +58,9 @@
 		A6B34C971C583CCA001296F3 /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gloss.swift; sourceTree = "<group>"; };
 		A6B34C981C583CCA001296F3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6B34C991C583CCA001296F3 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		A6B34CA31C5CB31E001296F3 /* TZEAdminTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TZEAdminTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6B34CA51C5CB31E001296F3 /* TZEAdminTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TZEAdminTests.swift; sourceTree = "<group>"; };
+		A6B34CA71C5CB31E001296F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6C215DC1C557A3300F31667 /* AddRoleRelations.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AddRoleRelations.sh; sourceTree = "<group>"; };
 		A6C215DD1C5583F200F31667 /* AddRoleUser.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AddRoleUser.sh; sourceTree = "<group>"; };
 		A6C215DE1C55884400F31667 /* RemoveRoleUser.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = RemoveRoleUser.sh; sourceTree = "<group>"; };
@@ -67,6 +79,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A6B34CA01C5CB31E001296F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6CEA1781C4AA75F00B26548 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +134,15 @@
 			path = Gloss;
 			sourceTree = "<group>";
 		};
+		A6B34CA41C5CB31E001296F3 /* TZEAdminTests */ = {
+			isa = PBXGroup;
+			children = (
+				A6B34CA51C5CB31E001296F3 /* TZEAdminTests.swift */,
+				A6B34CA71C5CB31E001296F3 /* Info.plist */,
+			);
+			path = TZEAdminTests;
+			sourceTree = SOURCE_ROOT;
+		};
 		A6C215E31C55A9FF00F31667 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,8 +162,9 @@
 		A6CEA1721C4AA75F00B26548 = {
 			isa = PBXGroup;
 			children = (
-				A68F884F1C538982003D200D /* Frameworks */,
 				A6CEA17D1C4AA75F00B26548 /* TZEAdmin */,
+				A68F884F1C538982003D200D /* Frameworks */,
+				A6B34CA41C5CB31E001296F3 /* TZEAdminTests */,
 				A6CEA17C1C4AA75F00B26548 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -145,6 +174,7 @@
 			children = (
 				A6CEA17B1C4AA75F00B26548 /* TZEAdmin */,
 				A6EBC4EF1C547F32006DF748 /* SwiftyJSONTests.xctest */,
+				A6B34CA31C5CB31E001296F3 /* TZEAdminTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -157,10 +187,10 @@
 				A6C215EE1C582F3500F31667 /* RESTforPARSE.swift */,
 				A6B34C901C583555001296F3 /* DataConnection.swift */,
 				A6B34C921C583CCA001296F3 /* Gloss */,
-				A6CEA18B1C4AD94500B26548 /* CreateNameData.swift */,
 				A6C215E31C55A9FF00F31667 /* Scripts */,
 				A682057C1C545C1800C16908 /* CommandLine */,
 				A6CEA18D1C4AE90700B26548 /* TimeZones.csv */,
+				A6CEA18B1C4AD94500B26548 /* CreateNameData.swift */,
 			);
 			path = TZEAdmin;
 			sourceTree = "<group>";
@@ -168,6 +198,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A6B34CA21C5CB31E001296F3 /* TZEAdminTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6B34CA81C5CB31E001296F3 /* Build configuration list for PBXNativeTarget "TZEAdminTests" */;
+			buildPhases = (
+				A6B34C9F1C5CB31E001296F3 /* Sources */,
+				A6B34CA01C5CB31E001296F3 /* Frameworks */,
+				A6B34CA11C5CB31E001296F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TZEAdminTests;
+			productName = TZEAdminTests;
+			productReference = A6B34CA31C5CB31E001296F3 /* TZEAdminTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		A6CEA17A1C4AA75F00B26548 /* TZEAdmin */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6CEA1821C4AA75F00B26548 /* Build configuration list for PBXNativeTarget "TZEAdmin" */;
@@ -213,6 +260,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Michael L. Mehr";
 				TargetAttributes = {
+					A6B34CA21C5CB31E001296F3 = {
+						CreatedOnToolsVersion = 7.2;
+					};
 					A6CEA17A1C4AA75F00B26548 = {
 						CreatedOnToolsVersion = 7.2;
 					};
@@ -235,11 +285,19 @@
 			targets = (
 				A6CEA17A1C4AA75F00B26548 /* TZEAdmin */,
 				A6EBC4EE1C547F32006DF748 /* SwiftyJSONTests */,
+				A6B34CA21C5CB31E001296F3 /* TZEAdminTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A6B34CA11C5CB31E001296F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6EBC4ED1C547F32006DF748 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,6 +308,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A6B34C9F1C5CB31E001296F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6B34CB11C5CBAEC001296F3 /* Option.swift in Sources */,
+				A6B34CAF1C5CBAD1001296F3 /* CreateNameData.swift in Sources */,
+				A6B34CAB1C5CBAB8001296F3 /* main.swift in Sources */,
+				A6B34CAD1C5CBAB8001296F3 /* RESTforPARSE.swift in Sources */,
+				A6B34CB01C5CBAEC001296F3 /* StringExtensions.swift in Sources */,
+				A6B34CA61C5CB31E001296F3 /* TZEAdminTests.swift in Sources */,
+				A6B34CB21C5CBAEC001296F3 /* CommandLine.swift in Sources */,
+				A6B34CAE1C5CBAB8001296F3 /* DataConnection.swift in Sources */,
+				A6B34CAC1C5CBAB8001296F3 /* TZREST.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6CEA1771C4AA75F00B26548 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -280,6 +354,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		A6B34CA91C5CB31E001296F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TZEAdminTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.azuresults.TZEAdminTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A6B34CAA1C5CB31E001296F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TZEAdminTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.azuresults.TZEAdminTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		A6CEA1801C4AA75F00B26548 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -407,6 +503,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A6B34CA81C5CB31E001296F3 /* Build configuration list for PBXNativeTarget "TZEAdminTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6B34CA91C5CB31E001296F3 /* Debug */,
+				A6B34CAA1C5CB31E001296F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		A6CEA1761C4AA75F00B26548 /* Build configuration list for PBXProject "TZEAdmin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
