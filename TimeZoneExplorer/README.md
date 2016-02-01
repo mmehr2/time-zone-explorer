@@ -6,24 +6,24 @@
 
 **Project Start Date**: January 11, 2016
 
-**Project Due Date**: January 25, 2016
-
 **Document Revision**: 1.0
 
 ## Project Requirements
-Write an application that shows time in different timezones
+Set up an application that behaves as follows:
 
-1. User must be able to create an account and log in
-* When logged in, user can see, edit and delete timezones he entered
-* Implement at least two roles with different permission levels (ie: a regular user would only be able to CRUD on his owned records, a user manager would be able to CRUD users, an admin would be able to CRUD on all records and users, etc.)
-* When a timezone is entered, each entry has a Name, Name of city in timezone, difference to GMT time
-* When displayed, each entry has also current time
-* Filter by names
-* REST API. Make it possible to perform all user actions via the API, including authentication (If a mobile application and you don’t know how to create your own backend you can use Parse.com, Firebase.com or similar services to create the API).
-* All actions need to be done client side using AJAX, refreshing the page is not acceptable. (If a mobile app, disregard this)
-* In any case you should be able to explain how a REST API works and demonstrate that by creating functional tests that use the REST Layer directly.
-* Bonus: unit and e2e tests!
-* You will not be marked on graphic design, however, do try to keep it as tidy as possible.
+1. The application allows a user to show time in different time zones of interest.
+* Require the user to create an account and log in.
+* Allow the user to pick time zones of interest from a master list and enter them into their own personal list.
+* Display the user's entry list, each with its time zone name and city, and the offset (in hours) from UTC/GMT.
+* When an individual timezone entry is selected for display, additional details should be shown, including the current time in that time zone.
+* Allow the user to filter the list by name.
+* Create a security role system, wherein three permission levels are implemented such that:
+  * Regular users are only allowed to access and modify (create/read/update/delete) their own entries.
+  * Managers are allowed to access and modify all users.
+  * Administrators are allowed to access and modify all data (users, data records, the security system itself)
+* Implement appropriate functional, unit, and end-to-end tests.
+* Allow all user actions to be performed by a REST API.
+* Demonstrate the REST API in action by implementing functional tests using the API.
 
 ## Components
 
